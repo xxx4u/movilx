@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ND Digital</title>
+		<link rel="stylesheet" href="vendor/css/jquery.mobile.structure-1.3.0.min.css" />
+		<link rel="stylesheet" href="vendor/css/mio2.min.css" />
+		<link rel="stylesheet" href="vendor/css/list-of-cards.css" />
+		<link rel="stylesheet" href="css/validation.css" />
+		<!--<link rel="stylesheet" href="css/style.css" />-->
+	</head>
+	<body>
+		<div id="welcome-page" data-role="page" data-theme="a">
+			<div data-role="header" data-position="inline">
+				<h1>Nuestro Diario Digital</h1>
+			</div>
+			
+			<div data-role="content"  data-theme="a" >
+				<div style="width:180px; margin:0 auto; background-color:#fbfbfb; border:1px solid #b8b8b8;">
+					<img src="images/logo.jpg" alt="image" width="180" height="85">
+				</div>
+				<ul data-role="listview" data-inset="true" data-theme="a">
+					<li data-role="list-divider">&iquest;Ya est&aacute;s registrado?</li>
+					<li><a onclick="$.mobile.changePage('user/signin.html');">Con&eacute;ctate</a></li>
+					
+					<li data-role="list-divider">&iquest;Nuevo usuario?</li>
+					<li><a onclick="$.mobile.changePage('user/signup.html');">Reg&iacute;strate</a></li>
+				</ul>
+			</div>
+			<footer data-role="footer">
+		    	<h3>Creado por NuestroDiario</h3>
+		        <a href="nuestrodiario.html" data-icon="info" data-iconpos="notext" class="ui-btn-right">Credits</a>
+		    </footer>
+		    
+		    <script src="vendor/js/cordova-2.5.0.js"></script>
+			<script src="vendor/js/jquery-1.9.1.min.js"></script>
+			<script src="js/defaults.js"></script>
+			<script src="vendor/js/jquery.mobile-1.3.0.min.js"></script>
+		</div>
+	</body>
+</html>

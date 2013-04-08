@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+/**
+ * Appcropolis Template: list-of-cards 
+ * @copy Appcropolis LLC (c) 2012. All rights reserved.
+ * @author Developer's Name (support@appcropolis.com)
+ * @date 2012-09-30
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN 
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+ * SOFTWARE.
+ *
+ * License and legal information: 
+ *
+ * http://appcropolis.com/license/
+ * http://appcropolis.com/legal/
+ * http://appcropolis.com/privacy/
+ */ -->
+<html>
+    
+    <head>
+        <title>Bolsa de ediciones</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" type="text/css" media="all" />
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <script src="js/jquery.mobile-1.2.0.min.js"></script>
+        <link rel="stylesheet" href="css/list-of-cards.css" />
+
+    </head>
+    <body>
+	    <!-- list-of-cards -->
+        <div id="list-of-cards" data-role="page"><!-- page -->
+            
+            <script src="js/loadeditionviews.js"></script>
+
+            <div data-role="header" data-position="fixed" data-theme="c"><!-- header -->
+               <form action="" method="get" name="search" class="search-form">
+				  <input class="search_box" id="query" name="query" placeholder="Search..." data-mini="true" type="search">
+				</form>
+            </div>
+            <div data-role="content" data-theme=""> <!-- content -->
+               <link rel="stylesheet" href="css/list-of-cards.css" />
+
+				<!-- <p style="text-align: center"><small>Sit sit mus porta tempor magna elit</small><p> -->
+				
+				<!-- list of cards -->
+                <ul id= "editionviewlist" data-role="list-of-cards"  data-role="listview" data-filter="true">
+
+                </ul>
+				
+                
+				
+            </div><!-- /content -->
+
+            <div data-role="footer" data-position="fixed" data-id="tab1">
+
+                <div data-role="navbar">
+                  <ul>
+                    <li><a href="#" data-icon="home" onclick="changeToHomePage();">Inicio</a></li>
+                    <li>
+                    <a href="#" data-icon="star" class="ui-btn-active ui-state-persist" onclick="changeToEditionViewPage();">Mis Ediciones
+                    </a>
+                  </li>
+                    <li><a href="#" data-icon="grid">Perfil</a></li>
+                  </ul>
+                </div>
+
+
+            </div>  <!-- Footer !--> 
+
+         </div> <!-- /page -->
+    </body>
+
+</html>

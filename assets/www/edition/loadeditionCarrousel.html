@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Employee Directory</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/style.css" />
+<!-- <link rel="stylesheet" type="text/css" href="page-swipe-iscroll/styles.css"> !-->
+
+</head>
+    
+<body>
+        
+<div id="editionListSwipePage" data-role="page" >
+<script src="js/purl.js"></script>
+<script src="js/loadedition.js"></script>
+
+   <div data-role="header" data-position="fixed">
+      <h1>ND Edicion</h1>
+   </div>
+
+   <div data-role="content">
+
+         <ul id="editionListSwipe" data-role="listview" data-filter="true">
+
+
+         	<div class="frame">
+        		<div id="pageWrapper">
+            		<div id="pageScroller">
+
+
+		      
+                   
+            		</div>
+            	</div>
+            </div>
+
+
+         </ul>
+
+    </div>     
+    
+
+
+    <div data-role="footer" data-position="fixed" data-id="tab1">
+
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#" data-icon="home" onclick="changeToHomePage();">Inicio</a></li>
+            <li><a href="#" data-icon="star" class="ui-btn-active ui-state-persist" onclick="changeToEditionViewPage();">Mis Ediciones</a></li>
+            <li><a href="#" data-icon="grid" onclick="changeToProfilePage();">Perfil</a></li>
+          </ul>
+      </div>
+
+
+    </div>  
+
+
+    
+</div>
+
+
+
+
+<!-- <script src="page-swipe-iscroll/jquery-1.7.2.min.js"></script>
+<script src="page-swipe-iscroll/iscroll.js"></script>
+<script src="page-swipe-iscroll/scroll.js"></script>
+!-->
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
