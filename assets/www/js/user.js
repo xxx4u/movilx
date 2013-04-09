@@ -12,18 +12,20 @@ function failure(e){
 function login(username, password){
     $.post(signinURL, {username: username, password: password}, function(response){
         if(response != 0){
+        	userID = response;
             movilxUserId = response;
             //navigator.notification.alert("Bienvenido a NuestroDiario Digital.", function(){}, "Bienvenido", "Aceptar");
             
             window.localStorage["username"] = username;
             window.localStorage["password"] = password;
             
-            $.mobile.changePage("edition/edition-list-cards.html");
+            $.mobile.changePage(path("/edition/edition-list-cards.html"));
         }else{
             navigator.notification.alert("Usuario o password inválido.", function(){}, "Error", "Aceptar");
-            $.mobile.changePage("user/signin.html");
+            //$.mobile.changePage("user/signin.html");
         }
         
+        $.mobile.loading('hide');
         $("#submit-button").removeAttr("disabled");
         
     },"json").fail(function(e){failure(e);});
@@ -34,7 +36,7 @@ function login(username, password){
 function autoLogin(){
     var username = window.localStorage["username"];
     var password = window.localStorage["password"];
-        
+    
     if(username != undefined && password != undefined){
     	//$.mobile.loading('show', {text: "Iniciando sesión...", textVisible: true});
         login(username, password);
@@ -43,14 +45,13 @@ function autoLogin(){
 
 function signin(){
     var form = $("#sign-in-form");
-    
-	$("#submit-button", form).attr("disabled", "disabled");	// disabling to avoid resubmits
-	$.mobile.loading('show', {text: "Iniciando sesión...", textVisible: true});
-	
     var username = $("#username", form).val();
     var password = $("#password", form).val();
     
     if(username != '' && password != ''){
+    	$("#submit-button", form).attr("disabled", "disabled");	// disabling to avoid resubmits
+    	$.mobile.loading('show', {text: "Iniciando sesión...", textVisible: true});
+    	
         login(username, password);
     }else{
         navigator.notification.alert("Debes ingresar tu usuario y password.", function(){}, "Error", "Aceptar");
@@ -74,11 +75,11 @@ function signup(){
     	console.log(response);
     	
         if(response == true){
-            navigator.notification.alert("Registro completado, bienvenido", function(){}, "Bienvenido", "Aceptar");          
+            navigator.notification.alert("Registro completado, bienvenido.", function(){}, "Bienvenido", "Aceptar");          
             login(username, password);	// auto login
         }else{
             if(response == '0'){ // Username repetido.
-              navigator.notification.alert("Error al registrarse: Usuario ya existe, escoge uno diferente.", function(){}, "Error", "Aceptar");
+              navigator.notification.alert("Lo sentimos, el usuario ingresado ya existe, escoge uno diferente.", function(){}, "Error", "Aceptar");
             }else{
               navigator.notification.alert("Error al registrarse: ", function(){}, "Error", "Aceptar");  
             }
@@ -87,7 +88,13 @@ function signup(){
     	$("#submit-button").removeAttr("disabled");
     	
     }, "json").fail(function(e){failure(e);});
+    
     $("#submit-button", form).removeAttr("disabled");
     
     return true;
+}
+
+function logout(){
+	window.localStorage.removeItem("username");
+    window.localStorage.removeItem("password");
 }

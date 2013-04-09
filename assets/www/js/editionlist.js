@@ -1,11 +1,11 @@
 //var serviceURL = "http://172.16.22.91/movilx_prueba/layerx/";
-var serviceURL = "http://www.nuestrodiario.com/MovilX/mobileOps/layerx/";
+var serviceURL = "http://media.nuestrodiario.com/MovilX/mobileOps/layerx/";
 
 var editions;
 var dateNoScope; 
 var supNoScope;
 
-$('#editionListPage').bind('pageinit', function(event) {
+$('#edition-list-page').bind('pageinit', function(event){
   getEditionList();
   $("#gotoGalleryBtn").click(function(){
         //var argValue = $("#argTxt").val();
@@ -29,7 +29,7 @@ function changePageWithArguments(supDate, supId){
 
 
 function getEditionList() {
-  $.getJSON(serviceURL + 'geteditions.php', function(data) {
+  $.getJSON(serviceURL + 'geteditions.php', function(data){
     $('#editionList li').remove();
     editions = data.items;
     $.each(editions, function(index, edition) {
@@ -48,15 +48,15 @@ function getEditionList() {
           '<a href="#" data-role="button" id="gotoGalleryBtnBoom" onclick="changePageWithArguments('+ "\'" + edition.fixed_dash_date + "\'" + ','+ edition.supplement_id +');">ABRIR AQUI</a><p>2 comments, 4 likes</p>' +
           '</li>');
           console.log("Debug Params 00x, date:  "+edition.fixed_dash_date+", suplem: "+edition.supplement_id);
-    });
+    }).fail(function(e){failure(e);});
+    
     $('#editionList').listview('refresh');
-
-          $("#gotoGalleryBtn").click(function(){
+    	$("#gotoGalleryBtn").click(function(){
         //var argValue = $("#argTxt").val();
         //$.mobile.changePage("page2.html",{data:{arg1:argValue}});
         //or you could pass parameters in the URL
         //alert("Give me your money foo!");
-        $.mobile.changePage("loadeditionCarrousel.html?date=2013-02-19&suplemento=1737");
+        $.mobile.changePage("carrousel.html?date=2013-02-19&suplemento=1737");
       });
 
   });

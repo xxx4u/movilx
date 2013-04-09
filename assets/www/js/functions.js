@@ -1,4 +1,12 @@
 
+function basePath(){
+	return window.location.href.split('www')[0] + "www";
+}
+
+function path(file){
+	return basePath() + file;
+}
+
 function checkRequirements(){
    if (navigator.connection.type == Connection.NONE){
       navigator.notification.alert('Necesitas conexión a internet para usar la aplicación.', function(){}, 'Alerta', 'Aceptar');
