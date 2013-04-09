@@ -1,5 +1,5 @@
 <div id="sign-up-page" data-role="page">
-	<header data-role="header">
+	<header data-role="header" data-position="fixed">
 		<a href="#" data-icon="back" data-iconpos="notext" data-rel="back" title="Go back">Cancelar</a>
 		<h1>Crear cuenta</h1>
 	</header>
@@ -25,7 +25,7 @@
                 <label for="confirm">Confirma tu contraseña:</label>
                 <input type="password" name="confirm" id="confirm" placeholder="Confirma tu contraseña" class="required" equalTo="#password" minlength="5" />
             </div>
-            <input type="submit" value="Crear cuenta" id="submit-button">
+            <input type="submit" value="Crear cuenta" id="submit-button"/>
         </form>
 	</div>
     <footer data-role="footer">
@@ -35,7 +35,6 @@
     
 	<script src="../vendor/js/jquery.validate.js"></script>
 	<!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
-	<script src="../js/user.js"></script>
 	<script>
 		function error_placement(error, element){
             element.parent().after(error);

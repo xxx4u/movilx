@@ -6,21 +6,22 @@ function failure(e){
 	navigator.notification.alert("Ocurrió un error interno, por favor intente más tarde.", function(){}, "Error", "Aceptar");
 	console.log(e);
 	$("#submit-button").removeAttr("disabled");
+	//$.mobile.loading('hide');
 }
-
 
 function login(username, password){
     $.post(signinURL, {username: username, password: password}, function(response){
         if(response != 0){
             movilxUserId = response;
-            navigator.notification.alert("Bienvenido a NuestroDiario Digital.", function(){}, "Bienvenido", "Aceptar");
+            //navigator.notification.alert("Bienvenido a NuestroDiario Digital.", function(){}, "Bienvenido", "Aceptar");
             
-            // store
             window.localStorage["username"] = username;
             window.localStorage["password"] = password;
-            $.mobile.changePage("editionlist-cards.html", {transition: 'slide'});
+            
+            $.mobile.changePage("edition/edition-list-cards.html");
         }else{
             navigator.notification.alert("Usuario o password inválido.", function(){}, "Error", "Aceptar");
+            $.mobile.changePage("user/signin.html");
         }
         
         $("#submit-button").removeAttr("disabled");
@@ -30,31 +31,27 @@ function login(username, password){
     return false;
 }
 
-/*
-*  Fecha Creacion: Enero 28, 2013
-*  Creado por: Edwin Maldonado ERMP
-*  Descripcion: Control de login.
-*/
-
 function autoLogin(){
     var username = window.localStorage["username"];
     var password = window.localStorage["password"];
         
     if(username != undefined && password != undefined){
-        login();
+    	//$.mobile.loading('show', {text: "Iniciando sesión...", textVisible: true});
+        login(username, password);
     }
 }
 
 function signin(){
-    var form = $("#sign-in-form");    
+    var form = $("#sign-in-form");
     
-	$("#submit-button", form).attr("disabled", "disabled");	//disabling to avoid resubmits
+	$("#submit-button", form).attr("disabled", "disabled");	// disabling to avoid resubmits
+	$.mobile.loading('show', {text: "Iniciando sesión...", textVisible: true});
+	
+    var username = $("#username", form).val();
+    var password = $("#password", form).val();
     
-    var u = $("#username", form).val();
-    var p = $("#password", form).val();
-    
-    if(u != '' && p!= ''){
-        login();
+    if(username != '' && password != ''){
+        login(username, password);
     }else{
         navigator.notification.alert("Debes ingresar tu usuario y password.", function(){}, "Error", "Aceptar");
     }
@@ -63,13 +60,6 @@ function signin(){
     
     return true;
 }
-
-
-/*
-*  Fecha Creacion: Febrero 2, 2013
-*  Creado por: Edwin Maldonado ERMP
-*  Descripcion: Llevar registro de usuarios
-*/
 
 function signup(){
 	var form = $("#sign-up-form");
