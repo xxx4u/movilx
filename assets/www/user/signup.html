@@ -34,13 +34,9 @@
     </footer>
     
 	<script src="../vendor/js/jquery.validate.js"></script>
-	<!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
-	<script>
-		function error_placement(error, element){
-            element.parent().after(error);
-		}
+	<script type="text/javascript">
 		$("#sign-up-page").on("pageinit", function(event){
-			$("#sign-up-form").validate({errorPlacement: error_placement, submitHandler:
+			$("#sign-up-form").validate({errorPlacement: errorPlacement, submitHandler:
 				function(form){
 					signup();
       			}

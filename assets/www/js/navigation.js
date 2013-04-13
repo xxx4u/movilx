@@ -1,17 +1,11 @@
-function changeToEditionViewPage(){
-	console.log("Debug Params BolsaEdiciones, user:" + movilxUserId);
-	$.mobile.changePage(path("/edition/edition-view.html"), {data: {userId: movilxUserId}, reloadPage: true});
-	//$.mobile.changePage("list-of-cards.html",{data:{userId:movilxUserId}});
+function goToEditionsPage(){
+	$.mobile.changePage(path("/edition/bag.html"), {data: {userId: userID}, reloadPage: true});
 }
 
-
-function changeToHomePage(){
-	console.log("Debug Params a HOME:" + movilxUserId);
-	$.mobile.changePage(path("/edition/edition-list-cards.html"), {data: {userId: movilxUserId}, reloadPage: true});
+function goToHomePage(){
+	$.mobile.changePage(path("/edition/index.html"), {data: {userId: userID}, reloadPage: true});
 }
 
-
-function changeToProfilePage(){
-	console.log("Debug Params a PROFILE:" + movilxUserId);
-	$.mobile.changePage(path("/user/profile.html"), {data: {userId: movilxUserId}, reloadPage: true});
+function goToProfilePage(){
+	$.mobile.changePage(path("/user/profile.html"), {data: {userId: userID}, reloadPage: true});
 }

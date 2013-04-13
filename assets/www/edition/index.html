@@ -1,0 +1,45 @@
+<div id="editions-page" data-role="page">
+	<div data-role="header" data-position="fixed">
+		<h1>Buscar edici&oacute;n</h1>
+	</div>
+	<div data-role="content">
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<div data-role="fieldcontain" class="ui-hide-label">
+					<label for="start-date">Fecha de inicio</label>
+					<input type="date" name="start-date" id="start-date" placeholder="Fecha inicio" data-role="datebox" 
+						data-options='{"mode": "datebox", "useFocus": true}'/>
+				</div>
+			</div>
+			<div class="ui-block-b">
+				<div data-role="fieldcontain" class="ui-hide-label">
+					<label for="end-date">Fecha de fin</label>
+					<input type="date" name="end-date" id="end-date" placeholder="Fecha fin" data-role="datebox" 
+						data-options='{"mode": "datebox", "useFocus": true}'/>
+				</div>
+			</div>
+		</div>
+		<a id="submit-button" onclick="searchEditions();" data-role="button" data-icon="search">Buscar</a>
+		
+		<dl id="editions" data-role="list-of-cards" data-divider-theme="b" data-inset="true">
+			<dt style="text-align:center"><h4>Busca ediciones por rango de fecha.</h4></dt>
+		</dl>
+	</div>
+    <div data-role="footer" data-position="fixed" data-id="tab1">
+        <div data-role="navbar">
+        	<ul>
+        		<li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist">Inicio</a></li>
+        		<li><a href="#" data-icon="star" onclick="goToEditionsPage();">Mis Ediciones</a></li>
+       			<li><a href="#" data-icon="gear" onclick="goToProfilePage();">Mi cuenta</a></li>
+    		</ul>
+   		</div>
+    </div>
+    <script src="../js/edition.js"></script>
+    <script type="text/javascript">
+	    $('#editions-page').on('pageinit', function(event){
+	    	$("#start-date").val(prettyDate(lastWeek()));
+	    	$("#end-date").val(prettyDate(today()));
+	    	getEditions();
+	    });
+    </script>
+</div>
