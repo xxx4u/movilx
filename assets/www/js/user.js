@@ -69,7 +69,7 @@ function signin(){
         navigator.notification.alert("Debes ingresar tu usuario y password.", function(){}, "Error", "Aceptar");
     }
     
-    ensable("#submit-button");
+    enable("#submit-button");
     
     return true;
 }
