@@ -77,7 +77,7 @@ function getEditions(start, end, success, error){
 			
 		    $('#editions ul').listview();
 		    $("#gotoGalleryBtn").click(function(){
-		        $.mobile.changePage(path("/edition/carrousel.html?date=2013-02-19&suplemento=1737"));
+		        $.mobile.changePage(path("edition/carrousel.html?date=2013-02-19&suplemento=1737"));
 		    });
 		}
 		
@@ -110,7 +110,7 @@ function getSections(date){
 		window.sessionStorage.currentSection = 0;
 		
 		$.mobile.loading('hide');
-		$.mobile.changePage(path("/edition/show.html"));
+		$.mobile.changePage("edition.html");
 		
 	}, "json").fail(function(e){failure(e)});
 }

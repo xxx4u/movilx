@@ -25,10 +25,9 @@ function login(username, password, success, error){
             window.localStorage["username"] = username;
             window.localStorage["password"] = password;
             
-            $.mobile.changePage(path("/edition/index.html"));
+            $.mobile.changePage("editions.html");
         }else{
             navigator.notification.alert("Usuario o password inválido.", function(){}, "Error", "Aceptar");
-            //$.mobile.changePage("user/signin.html");
         }
         
     },"json").fail(function(e){failure(e);});
@@ -36,7 +35,7 @@ function login(username, password, success, error){
     return false;
 }
 
-function autoLogin(){
+function autoLogin(dest){
     var username = window.localStorage["username"];
     var password = window.localStorage["password"];
     
@@ -47,6 +46,10 @@ function autoLogin(){
         }, function(e){
 			failure(e);
 		});
+    }else{
+    	if(dest != undefined){
+    		$.mobile.changePage(dest);
+    	}
     }
 }
 
@@ -148,4 +151,5 @@ function updateProfile(){
 function logout(){
 	window.localStorage.removeItem("username");
     window.localStorage.removeItem("password");
+    $.mobile.changePage("index.html");
 }

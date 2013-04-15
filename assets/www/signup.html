@@ -1,9 +1,10 @@
-<div id="user-profile-page" data-role="page" >
-	<div data-role="header" data-position="fixed">
-		<h1>Mi cuenta</h1>
-	</div>
+<div id="sign-up-page" data-role="page">
+	<header data-role="header" data-position="fixed">
+		<a href="#" data-icon="back" data-iconpos="left" data-rel="back" title="Cancelar">Atr&aacute;s</a>
+		<h1>Crear cuenta</h1>
+	</header>
 	<div id="content" data-role="content">
-		<form id="user-profile-form">
+     	<form id="sign-up-form">
      		<div data-role="fieldcontain">
      			<label for="name">Tu nombre:</label>
      			<input type="text" name="name" id="name" placeholder="Nombre y apellido" class="required" minlength="5"/>
@@ -24,27 +25,22 @@
                 <label for="confirm">Confirma tu contraseña:</label>
                 <input type="password" name="confirm" id="confirm" placeholder="Confirma tu contraseña" class="required" equalTo="#password" minlength="5" />
             </div>
-            <input type="submit" value="Actualizar" id="submit-button" data-icon="check"/>
+            <input id="submit-button" type="submit" value="Crear mi cuenta" data-icon="plus" />
         </form>
 	</div>
-    <div data-role="footer" data-position="fixed" data-id="tab1">
-	    <div data-role="navbar">
-	    	<ul>
-	    		<li><a href="#" data-icon="home" onclick="goToHomePage();">Inicio</a></li>
-	    		<li><a href="#" data-icon="star" onclick="goToEditionsPage();">Mis Ediciones</a></li>
-	    		<li><a href="#" data-icon="gear" class="ui-btn-active ui-state-persist">Mi Cuenta</a></li>
-			</ul>
-		</div>
-    </div>
-    <script src="../vendor/js/jquery.validate.js"></script>
-    <script type="text/javascript">
-    	$("#user-profile-page").on('pageinit', function(event){
-    		profile();
-    		$("#user-profile-form").validate({errorPlacement: errorPlacement, submitHandler:
+    <footer data-role="footer">
+    	<h3>Creado por NuestroDiario</h3>
+        <a href="http://www.nuestrodiario.com" data-icon="info" data-iconpos="notext" class="ui-btn-right">Credits</a>
+    </footer>
+    
+	<script src="vendor/js/jquery.validate.js"></script>
+	<script type="text/javascript">
+		$("#sign-up-page").on("pageinit", function(event){
+			$("#sign-up-form").validate({errorPlacement: errorPlacement, submitHandler:
 				function(form){
-					updateProfile();
+					signup();
       			}
   			});
-    	});
-    </script>
+		});
+	</script>
 </div>

@@ -2,12 +2,13 @@ function errorPlacement(error, element){
     element.parent().after(error);
 }
 
+// Deprecated
 function basePath(){
 	return window.location.href.split('www')[0] + "www";
 }
 
 function path(file){
-	return basePath() + file;
+	return $.mobile.path.makePathAbsolute(file, window.location.href);
 }
 
 function enable(selector){
