@@ -1,11 +1,11 @@
 function goToEditionsPage(){
-	$.mobile.changePage("bag.html", {data: {userId: userID}, reloadPage: true});
+	$.mobile.changePage("audio.html", {data: {}, reloadPage: true});
 }
 
 function goToHomePage(){
-	$.mobile.changePage("editions.html", {data: {userId: userID}, reloadPage: true});
+	$.mobile.changePage("editions.html", {data: {}, reloadPage: true});
 }
 
 function goToProfilePage(){
-	$.mobile.changePage("profile.html", {data: {userId: userID}, reloadPage: true});
+	$.mobile.changePage("profile.html", {data: {}, reloadPage: true});
 }

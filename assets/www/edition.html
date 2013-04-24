@@ -4,8 +4,9 @@
 		<h1 id="edition-title">Edici&oacute;n</h1>
 		<div data-role="navbar">
 			<ul id="sections-nav">
-				<li><a class="ui-btn-active ui-state-persist">Edicion Nacional</a></li>
-				<li><a>Regional</a></li>
+				<li><a onclick="prevSection();"></a></li>
+				<li><a onclick="#" id="current" class="ui-btn-active ui-state-persist"></a></li>
+				<li><a onclick="nextSection();"></a></li>
 			</ul>
 		</div>
 	</div>
@@ -33,18 +34,11 @@
     </div>
 	<script type="text/javascript">
 		$('#edition-page').on('pageinit', function(event, data){
-			var sections = JSON.parse(window.sessionStorage.sections);
 			var index = window.sessionStorage.currentSection;
-			
+			var sections = JSON.parse(window.sessionStorage.sections);
 			var current = sections[index];
-			var nav = [];
-			if(index == 0){
-				nav = sections.slice(0, 2);
-			}else{
-				nav = sections.slice(index - 1, index + 1);
-			}
 			
-			sectionsNavigation(index, nav);
+			sectionsNavigation();
 			$("#edition-title").html("Edición " + current.date);
 		});
 	</script>

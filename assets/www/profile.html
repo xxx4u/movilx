@@ -8,7 +8,11 @@
 		<form id="user-profile-form">
      		<div data-role="fieldcontain">
      			<label for="name">Tu nombre:</label>
-     			<input type="text" name="name" id="name" placeholder="Nombre y apellido" class="required" minlength="5"/>
+     			<input type="text" name="name" id="name" placeholder="Nombre" class="required" minlength="2"/>
+ 			</div>
+ 			<div data-role="fieldcontain">
+     			<label for="lastname">Tu apellido:</label>
+     			<input type="text" name="lastname" id="lastname" placeholder="Apellido" class="required" minlength="2"/>
  			</div>
      		<div data-role="fieldcontain">
      			<label for="username">Usuario:</label>
@@ -18,14 +22,6 @@
          		<label for="email">Email:</label>
          		<input type="text" name="email" id="email" placeholder="tu@ejemplo.com" class="required email" />
      		</div>
-     		<div data-role="fieldcontain">
-         		<label for="password">Contraseña:</label>
-                <input type="password" name="password" id="password" placeholder="Contraseña" class="required" minlength="5"/>
-            </div>
-     		<div data-role="fieldcontain">
-                <label for="confirm">Confirma tu contraseña:</label>
-                <input type="password" name="confirm" id="confirm" placeholder="Confirma tu contraseña" class="required" equalTo="#password" minlength="5" />
-            </div>
             <input type="submit" value="Actualizar" id="submit-button" data-icon="check"/>
         </form>
 	</div>
