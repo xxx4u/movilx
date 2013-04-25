@@ -9,3 +9,7 @@ function goToHomePage(){
 function goToProfilePage(){
 	$.mobile.changePage("profile.html", {data: {}, reloadPage: true});
 }
+
+function loadSection(){
+	getPages(function(){$.mobile.changePage("section.html", {data: {}, reloadPage: true});});
+}

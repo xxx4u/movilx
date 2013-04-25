@@ -1,0 +1,40 @@
+<div id="section-page" data-role="page">
+	<div data-role="header" data-position="fixed">
+		<a href="edition.html" data-icon="back" data-iconpos="left" data-rel="back" title="Regresar">Atr&aacute;s</a>
+		<h1 id="section-title">Secci&oacute;n</h1>
+	</div>
+	<div data-role="content">
+		<dl id="pages" data-role="list-of-cards" data-divider-theme="b" data-inset="true">
+			<dt>
+				<ul data-role="listview" data-inset="true" class="loc-card">
+					<li class="loc-image">
+						<div><a><img id="page" src="vendor/css/images/ajax-loader.png"/></a></div>
+					</li>
+				</ul>
+			</dt>
+		</dl>
+	</div>
+	<div data-role="footer" data-position="fixed" data-id="tab1">
+        <div data-role="navbar">
+        	<ul>
+        		<li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist">Inicio</a></li>
+        		<li><a href="#" data-icon="star" onclick="goToEditionsPage();">Mis Ediciones</a></li>
+       			<li><a href="#" data-icon="gear" onclick="goToProfilePage();">Mi cuenta</a></li>
+    		</ul>
+   		</div>
+    </div>
+	<script type="text/javascript">
+		$('#section-page').on('pageinit', function(event, data){
+			var index = window.sessionStorage.currentSection;
+			var sections = JSON.parse(window.sessionStorage.sections);
+			var section = sections[index];
+			
+			index = window.sessionStorage.currentPage;
+			var pages = JSON.parse(window.sessionStorage.pages);
+			var page = pages[index];
+			
+			$("#section-title").html(section.title);
+			$("#page").attr("src", page.medium);
+		});
+	</script>
+</div>

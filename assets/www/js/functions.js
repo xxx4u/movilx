@@ -1,3 +1,7 @@
+String.prototype.toSnake = function(){
+	return this.replace(/ /, "_").toLowerCase();
+};
+
 function errorPlacement(error, element){
     element.parent().after(error);
 }

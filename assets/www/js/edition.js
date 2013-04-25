@@ -1,6 +1,6 @@
 var editionsURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/geteditions.php";
 var sectionsURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/getsections.php";
-var pagesURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/getpages_section.php";
+var pagesURL    = "http://media.nuestrodiario.com/MovilX/mobileOps2/getpages_section.php";
 
 function failure(e){
 	console.log(JSON.stringify(e));
@@ -17,6 +17,18 @@ function getEditionCover(selector, date){
 function getEditionURL(date){
 	var baseURL = 'http://media.nuestrodiario.com/nuestrodiario/pages/edicion/';
 	return baseURL + slashDate(new Date(date)) + '/edicion_nacional/1.jpg'
+}
+
+function getSectionURL(section){
+	var baseURL = 'http://media.nuestrodiario.com/nuestrodiario/pages/edicion/';
+	return baseURL + section.slashDate + '/' + section.title.toSnake() + '/1.jpg'
+}
+
+function getCurrentSectionURL(){
+	var index = parseInt(window.sessionStorage.currentSection);
+	var sections = JSON.parse(window.sessionStorage.sections);
+	
+	return getSectionURL(sections[index]);
 }
 
 function searchEditions(){
@@ -99,8 +111,11 @@ function getSections(date){
 			$.each(items, function(index, item){
 				section = {};
 				
+				section.id = item.supplement_id;
 				section.title = item.cat_supplement_type_name;
-				section.date = prettyDate(new Date(item.edition_publication_date));
+				section.date = new Date(item.edition_publication_date);
+				section.slashDate = slashDate(section.date);
+				section.prettyDate = prettyDate(section.date);
 				section.pages = item.pages_amount;
 				
 				sections.push(section);
@@ -146,6 +161,8 @@ function sectionsNavigation(){
 	var current = $("li a#current", nav);
 	var next = $("li a:last", nav);
 	
+	$("#section-cover").attr("src", getSectionURL(sections[index]));
+	
 	if(index == 0){
 		disable($(".ui-btn-text", prev)).html("&nbsp;");
 		$(".ui-btn-text", current).html(sections[0].title);
@@ -163,15 +180,20 @@ function sectionsNavigation(){
 	prev.removeClass("ui-btn-active ui-state-persist");
 	current.addClass("ui-btn-active ui-state-persist");
 	next.removeClass("ui-btn-active ui-state-persist");
-	
 }
 
-function getPages(){
-	var section = window.sessionStorage.currentSection;
-	var args = {sup_i: section};
+function getPages(success){
+	$.mobile.loading('show', {text: "Cargando sección...", textVisible: true});
+	
+	var index = window.sessionStorage.currentSection;
+	var sections = JSON.parse(window.sessionStorage.sections);
+	var section = sections[index];
+	
+	var args = {sup_id: section.id};
 	var pages = [];
 	
 	$.post(pagesURL, args, function(response){
+		
 		var items = response.items;
 		var page;
 		
@@ -181,10 +203,24 @@ function getPages(){
 				
 				page.id = item.page_id;
 				page.number = item.page_number;
+				page.base_url = item.base_url + item.year + "/" + item.month + "/" + item.day + "/" + item.folder + "/"
+				
+				page.small = page.base_url + item.small;
+				page.medium = page.base_url + item.medium;
+				page.large = page.base_url + item.large;
 				
 				pages.push(page);
 			});
+			
+			$.mobile.loading('hide');
+			window.sessionStorage.pages = JSON.stringify(pages);
+			window.sessionStorage.currentPage = 0;
+			if(success){
+				success();
+			}
+		}else{
+			console.log(response.error.text);
 		}
-	});
-	window.sessionStorage.pages = JSON.stringify(pages);
+		
+	}, "json").fail(function(e){failure(e)});
 }
