@@ -13,17 +13,17 @@
 	</head>
 	<body>
 		<div id="index-page" data-role="page">
-			<div data-role="header" data-position="inline">
-				<h1>NuestroDiario Digital</h1>
+			<div data-role="header">
+				<h1>NuestroDiario</h1>
 			</div>
 			
-			<div data-role="content"  data-theme="a" >
+			<div data-role="content">
 				<div style="width:180px; margin:0 auto; background-color:#fbfbfb; border:1px solid #b8b8b8;">
 					<img src="images/logo.jpg" alt="image" width="180" height="85">
 				</div>
-				<ul data-role="listview" data-inset="true" data-theme="a">
+				<ul data-role="listview" data-inset="true">
 					<li data-role="list-divider">&iquest;Ya est&aacute;s registrado?</li>
-					<li><a onclick="autoLogin('signin.html');">Con&eacute;ctate</a></li>
+					<li><a href="#" onclick="autoLogin('signin.html');">Con&eacute;ctate</a></li>
 					
 					<li data-role="list-divider">&iquest;Nuevo usuario?</li>
 					<li><a href="signup.html">Reg&iacute;strate</a></li>
@@ -47,7 +47,7 @@
 			<script src="js/navigation.js"></script>
 			<script type="text/javascript">
 				$(document).bind('deviceready', function(){
-					autoLogin();
+					//autoLogin();
 				});
 			</script>
 		</div>

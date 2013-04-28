@@ -34,8 +34,12 @@
 			var page = pages[index];
 			
 			zoomPage(page);
-			new iScroll('wrapper', {zoom: true});
-			document.addEventListener('touchmove', function(e){e.preventDefault();}, false);
+			new iScroll('wrapper', {zoom: true, zoomMax: 7});
+			document.addEventListener('touchmove', preventScroll, false);
+	    });
+	    
+	    $('#zoom-page').on('pagehide', function(event){
+	    	document.removeEventListener('touchmove', preventScroll, false);
 	    });
     </script>
 </div>

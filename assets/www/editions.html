@@ -21,7 +21,7 @@
 		</div>
 		<a id="submit-button" onclick="searchEditions();" data-role="button" data-icon="search">Buscar</a>
 		
-		<dl id="editions" data-role="list-of-cards" data-divider-theme="b" data-inset="true">
+		<dl id="editions" data-role="list-of-cards" data-inset="true">
 			<dt style="text-align:center"><h4>Busca ediciones por rango de fecha.</h4></dt>
 		</dl>
 	</div>
@@ -30,13 +30,14 @@
         	<ul>
         		<li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist">Inicio</a></li>
 				<!--<li><a href="#" data-icon="star" onclick="goToEditionsPage();">Mis Ediciones</a></li>-->
-       			<li><a href="profile.html" data-icon="gear" data-prefetch="true">Mi cuenta</a></li>
+       			<li><a href="profile.html" data-icon="gear">Mi cuenta</a></li>
     		</ul>
    		</div>
     </div>
     <script src="js/edition.js"></script>
     <script type="text/javascript">
 	    $('#editions-page').on('pageinit', function(event){
+	    	
 	    	$("#start-date").val(prettyDate(lastWeek()));
 	    	$("#end-date").val(prettyDate(today()));
 	    	getEditions();

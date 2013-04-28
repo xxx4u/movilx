@@ -2,6 +2,10 @@ String.prototype.toSnake = function(){
 	return this.replace(/ /, "_").toLowerCase();
 };
 
+function preventScroll(e){
+	e.preventDefault();
+}
+
 function errorPlacement(error, element){
     element.parent().after(error);
 }

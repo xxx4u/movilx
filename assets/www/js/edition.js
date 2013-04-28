@@ -78,20 +78,20 @@ function getEditions(start, end, success, error){
 			success();
 		}
 		if(data.items == null){
-			$('#editions').html("<center><h4>No se encontraron resultados.</h4></center>");
+			$('#editions-page #editions').html("<center><h4>No se encontraron resultados.</h4></center>");
 		}else{
-			$('#editions').html("");
+			$('#editions-page #editions').html("");
 			$.each(data.items, function(index, edition){
 				var date = edition.fixed_slash_date;
 				
-				$('#editions').append('<dt>'+
+				$('#editions-page #editions').append('<dt>'+
 					'<ul data-role="listview" data-inset="true" class="loc-card"><li class="loc-image">' +
 					'<div><a onclick="getSections(' + formatDate(new Date(date)) + ');"><img src="' + getEditionURL(date) + '"/></div>' +
 					'</li></ul></dt>'
 				);
 	  		});
 			
-		    $('#editions ul').listview();
+		    $('#editions-page #editions ul').listview();
 		}
 		
     }, "json").fail(error);

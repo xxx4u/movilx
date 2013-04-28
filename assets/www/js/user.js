@@ -20,9 +20,9 @@ function login(username, password, success, error){
         if(response.items != undefined){
         	//navigator.notification.alert("Bienvenido a NuestroDiario Digital.", function(){}, "Bienvenido", "Aceptar");
             
-            window.localStorage["username"] = username;
-            window.localStorage["password"] = password;
-            window.localStorage["session"] = response.items[0].session_id;
+            window.localStorage.username = username;
+            window.localStorage.password = password;
+            window.localStorage.session = response.items[0].session_id;
             $.mobile.changePage("editions.html");
         }else{
         	console.log(JSON.stringify(response));
