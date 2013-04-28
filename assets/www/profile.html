@@ -1,6 +1,6 @@
 <div id="user-profile-page" data-role="page" >
 	<div data-role="header" data-position="fixed">
-		<a href="editions.html" data-icon="back" data-iconpos="left" data-rel="back" title="Regresar">Atr&aacute;s</a>
+		<a href="editions.html" data-icon="back" data-iconpos="left" data-direction="reverse" data-rel="back" title="Regresar">Atr&aacute;s</a>
 		<h1>Mi cuenta</h1>
 		<a onclick="logout();" data-icon="delete" data-iconpos="left" title="Cerrar Sesi&oacuten">Salir</a>
 	</div>
@@ -26,10 +26,9 @@
         </form>
 	</div>
     <div data-role="footer" data-position="fixed" data-id="tab1">
-	    <div data-role="navbar">
+	    <div data-role="navbar" data-iconpos="left">
 	    	<ul>
-	    		<li><a href="#" data-icon="home" onclick="goToHomePage();">Inicio</a></li>
-	    		<li><a href="#" data-icon="star" onclick="goToEditionsPage();">Mis Ediciones</a></li>
+	    		<li><a href="editions.html" data-icon="home">Inicio</a></li>
 	    		<li><a href="#" data-icon="gear" class="ui-btn-active ui-state-persist">Mi Cuenta</a></li>
 			</ul>
 		</div>

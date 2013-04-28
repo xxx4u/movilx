@@ -1,47 +1,33 @@
 <div id="zoom-page" data-role="page">
-	<div data-role="header" data-position="fixed" data-fullscreen="true" data-theme="b">
+	<div data-role="header" data-position="fixed" data-fullscreen="true" data-visible-on-page-show="true" data-theme="b">
 		<a data-icon="delete" data-iconpos="notext" data-direction="reverse" data-rel="back" title="Regresar">Regresar</a>
 		<h1 id="title">Zoom</h1>
 	</div>
 	<div data-role="content">
 		<div id="wrapper">
 			<div id="scroller">
-				<p><img id="page"></p>
+				<p><img id="page" src="vendor/css/images.ajax-loader.gif"></p>
 			</div>
 		</div>
 	</div>
-    <div data-role="footer" data-position="fixed" data-id="tab1" data-fullscreen="true" data-theme="b">
-        <div data-role="navbar" data-iconpos="left">
-        	<ul>
-        		<li><a onclick="last()" data-icon="arrow-l">Anterior</a></li>
-       			<li><a onclick="next();" data-icon="arrow-r">Siguiente</a></li>
-    		</ul>
-   		</div>
+    <div data-role="footer" data-position="fixed" data-id="tab1" data-fullscreen="true" data-visible-on-page-show="true" data-theme="b">
+<!--         <div data-role="navbar" data-iconpos="left"> -->
+<!--         	<ul> -->
+<!--         		<li><a onclick="last()" data-icon="arrow-l">Anterior</a></li> -->
+<!--        			<li><a onclick="next();" data-icon="arrow-r">Siguiente</a></li> -->
+<!--     		</ul> -->
+<!--    		</div> -->
+		<h1 id="subtitle">Página</h1>
     </div>
     <script src="vendor/js/iscroll.js"></script>
     <script type="text/javascript">
-    	function next(){
-    		var index = parseInt(window.sessionStorage.currentSection) + 1;
-			var pages = JSON.parse(window.sessionStorage.pages);
-			window.sessionStorage.currentSection = index;
-			
-    		if(index + 1 < pages.length){
-    			index++;
-        		zoomPage(pages[index]);
-    		}
-    	}
-    	
-    	function last(){
-    		var index = parseInt(window.sessionStorage.currentSection);
-			var pages = JSON.parse(window.sessionStorage.pages);
-			window.sessionStorage.currentSection = index;
-			
-    		if(index > 0){
-    			index--;
-        		zoomPage(pages[index]);
-    		}
-    	}
-    	
+	    $('#zoom-page').on('pageinit', function(event){
+	    	//console.log("zoom pageinit");
+	    });
+	    $('#zoom-page').on('pageload', function(event){
+	    	//console.log("zoom pageload");
+	    });
+	    
 	    $('#zoom-page').on('pageinit', function(event){
 	    	var index = window.sessionStorage.currentPage;
 			var pages = JSON.parse(window.sessionStorage.pages);
@@ -49,7 +35,7 @@
 			
 			zoomPage(page);
 			new iScroll('wrapper', {zoom: true});
-			document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+			document.addEventListener('touchmove', function(e){e.preventDefault();}, false);
 	    });
     </script>
 </div>

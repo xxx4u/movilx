@@ -26,7 +26,13 @@ function login(username, password, success, error){
             $.mobile.changePage("editions.html");
         }else{
         	console.log(JSON.stringify(response));
-        	navigator.notification.alert("Error: " + response.error[0].text , function(){}, "Error", "Aceptar");
+        	
+        	var error = "Ocurrió un error, intenta más tarde.";
+        	if(response.error != undefined){
+        		error = response.error[0].text;
+        	}
+        		
+        	navigator.notification.alert("Error: " + error, function(){}, "Error", "Aceptar");
             $.mobile.changePage("signin.html");
         }
     	
@@ -98,7 +104,7 @@ function signup(){
             navigator.notification.alert("Registro completado, bienvenido.", function(){}, "Bienvenido", "Aceptar");          
             login(username, password);	// auto login
         }else{
-        	navigator.notification.alert("Error al registrarse: " + response.error.text, function(){}, "Error", "Aceptar");  
+        	navigator.notification.alert("Error al registrarse: " + response.error[0].text, function(){}, "Error", "Aceptar");  
         }
         
         enable("#submit-button");
@@ -127,7 +133,7 @@ function profile(){
 				$("#name").val(user.name);
 				$("#lastname").val(user.lastname);
 			}else{
-				navigator.notification.alert("Error: " + response.error.text, function(){}, "Error", "Aceptar");
+				navigator.notification.alert("Error: " + response.error[0].text, function(){}, "Error", "Aceptar");
 			}
 			
 			enable("#submit-button");

@@ -306,13 +306,11 @@ function loadPages(){
 
 function loadPage(page){
 	$("#section-page #page").attr("src", page.medium);
+	$("#section-page #zoom").attr("href", "zoom.html?index=" + page.number);
+	//$("#section-page #zoom").attr("data-prefetch", "true");
+	
 	$(document).off("swipeleft").on("swipeleft", "#section-page", nextPage);
 	$(document).off("swiperight").on("swiperight", "#section-page", prevPage);
-}
-
-function zoomPage(page){
-	$("#zoom-page #page").attr("src", page.large);
-	$("#zoom-page #title").html("P&aacute;gina #" + page.number);
 }
 
 function nextPage(){
@@ -321,7 +319,7 @@ function nextPage(){
 	
 	if(index < pages.length){
 		window.sessionStorage.currentPage = index + 1;
-		$.mobile.changePage("section.html?current=" + (index + 1), {reloadPage: false});
+		$.mobile.changePage("section.html?current=" + (index + 1));
 	}
 }
 
@@ -331,9 +329,44 @@ function prevPage(){
 	
 	if(index > 0){
 		window.sessionStorage.currentPage = index - 1;
-		$.mobile.changePage("section.html?current=" + (index - 1), {reverse:true, reloadPage: false});
+		$.mobile.changePage("section.html?current=" + (index - 1), {reverse: true});
 	}
 }
+
+
+
+function zoomPage(page){
+	$("#zoom-page #page").attr("src", page.large);
+	$("#zoom-page #title").html("P&aacute;gina #" + page.number);
+	
+	var index = parseInt(window.sessionStorage.currentSection);
+	var sections = JSON.parse(window.sessionStorage.sections);
+	var section = sections[index];
+	$("#zoom-page #subtitle").html(section.title);
+}
+
+function zoomNext(){
+	var index = parseInt(window.sessionStorage.currentSection) + 1;
+	var pages = JSON.parse(window.sessionStorage.pages);
+	window.sessionStorage.currentSection = index;
+	
+	if(index + 1 < pages.length){
+		index++;
+		zoomPage(pages[index]);
+	}
+}
+
+function zoomLast(){
+	var index = parseInt(window.sessionStorage.currentSection);
+	var pages = JSON.parse(window.sessionStorage.pages);
+	window.sessionStorage.currentSection = index;
+	
+	if(index > 0){
+		index--;
+		zoomPage(pages[index]);
+	}
+}
+
 
 function getMedia(page){
 	if(page == undefined){
@@ -346,7 +379,6 @@ function getMedia(page){
 	var list = [];
 	
 	$.post(mediaURL, args, function(response){
-		
 		var items = response.items;
 		if(items != null){
 			$.each(items, function(index, item){
@@ -359,13 +391,13 @@ function getMedia(page){
 				list.push(media);
 			});
 			
-			$("#media-btn").show();
+			$("#section-page #media-btn").show();
 			mediaPanel(list);
 			
 			window.sessionStorage.media = JSON.stringify(list);
 			window.sessionStorage.currentMedia = 0;
 		}else{
-			$("#media-btn").hide();
+			$("#section-page #media-btn").hide();
 			console.log(JSON.stringify(response));
 		}
 		

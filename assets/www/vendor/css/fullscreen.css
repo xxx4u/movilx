@@ -5,13 +5,20 @@
 }
 
 #scroller p{
-	text-align: center;
+	text-align:center;
 	padding:0;
-	margin-bottom:20%;
+	margin-bottom:40%;
 }
 
 p img{
-	max-width:90%; max-height:90%;
-	margin:5% auto;
+	max-width:90%;
+	max-height:100%;
+	margin:0 auto;
 	/*-webkit-transform:translate3d(0,0,0);*/ /* breaks fullscreen toolbars*/
+}
+
+@media all and (min-height: 500px){
+  p img{
+    margin-top: 15%;
+  }
 }

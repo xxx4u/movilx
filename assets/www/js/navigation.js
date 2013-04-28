@@ -1,16 +1,16 @@
 function goToEditionsPage(){
-	$.mobile.changePage("audio.html", {data: {}, reloadPage: true});
+	$.mobile.changePage("editions.html", {reloadPage: true});
 }
 
 function goToHomePage(){
-	$.mobile.changePage("editions.html", {data: {}, reloadPage: true});
+	$.mobile.changePage("editions.html", {reloadPage: true});
 }
 
 function goToProfilePage(){
-	$.mobile.changePage("profile.html", {data: {}, reloadPage: true});
+	$.mobile.changePage("profile.html", {reloadPage: true});
 }
 
 function goToSection(){
-	getPages(function(){$.mobile.changePage("section.html", {data: {}, reloadPage: true});});
+	getPages(function(){$.mobile.changePage("section.html", {reloadPage: true});});
 	//$.mobile.changePage("pages.html", {reloadPage: true});
 }
