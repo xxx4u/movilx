@@ -10,6 +10,7 @@ function goToProfilePage(){
 	$.mobile.changePage("profile.html", {data: {}, reloadPage: true});
 }
 
-function loadSection(){
+function goToSection(){
 	getPages(function(){$.mobile.changePage("section.html", {data: {}, reloadPage: true});});
+	//$.mobile.changePage("pages.html", {reloadPage: true});
 }

@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="vendor/css/jqm-datebox.css" />
 		<link rel="stylesheet" href="vendor/css/cards.css" />
 		<link rel="stylesheet" href="vendor/css/validation.css" />
+		<link rel="stylesheet" href="vendor/css/fullscreen.css" />
 	</head>
 	<body>
 		<div id="index-page" data-role="page">
@@ -47,11 +48,6 @@
 			<script>
 				$(document).bind('deviceready', function(){
 					autoLogin();
-				});
-				
-				$(window).bind('onbeforeunload', function(){
-					console.log("exit?");
-					return true;
 				});
 			</script>
 		</div>

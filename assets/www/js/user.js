@@ -25,7 +25,8 @@ function login(username, password, success, error){
             window.localStorage["session"] = response.items[0].session_id;
             $.mobile.changePage("editions.html");
         }else{
-        	navigator.notification.alert("Error: " + response.error.text , function(){}, "Error", "Aceptar");
+        	console.log(JSON.stringify(response));
+        	navigator.notification.alert("Error: " + response.error[0].text , function(){}, "Error", "Aceptar");
             $.mobile.changePage("signin.html");
         }
     	
@@ -36,8 +37,8 @@ function login(username, password, success, error){
 }
 
 function autoLogin(dest){
-    var username = window.localStorage["username"];
-    var password = window.localStorage["password"];
+    var username = window.localStorage.username;
+    var password = window.localStorage.password;
     
     if(username != undefined && password != undefined){
     	logout();
@@ -159,7 +160,6 @@ function updateProfile(){
 
 function logout(){
 	var username = window.localStorage.username;
-	
 	$.post(signoutURL, {username: username}, function(response){
     	
         if(response.items[0].closed == "OK"){
@@ -168,10 +168,10 @@ function logout(){
             window.localStorage.removeItem("session");
             $.mobile.changePage("index.html");
         }else{
-        	window.localStorage.removeItem("username");
-        	window.localStorage.removeItem("password");
-            window.localStorage.removeItem("session");
-            navigator.notification.alert("Error:" + response.error.text, function(){}, "Error", "Aceptar");
+        	//window.localStorage.removeItem("username");
+        	//window.localStorage.removeItem("password");
+            //window.localStorage.removeItem("session");
+            navigator.notification.alert("Error:" + response.error[0].text, function(){}, "Error", "Aceptar");
         }
         
     },"json").fail(function(e){failure(e);});

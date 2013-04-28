@@ -1,6 +1,7 @@
 var editionsURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/geteditions.php";
 var sectionsURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/getsections.php";
 var pagesURL    = "http://media.nuestrodiario.com/MovilX/mobileOps2/getpages_section.php";
+var mediaURL    = "http://media.nuestrodiario.com/MovilX/mobileOps2/getmedia_page.php";
 
 function failure(e){
 	console.log(JSON.stringify(e));
@@ -30,6 +31,7 @@ function getCurrentSectionURL(){
 	
 	return getSectionURL(sections[index]);
 }
+
 
 function searchEditions(){
 	var start = $("#start-date").val();
@@ -81,6 +83,7 @@ function getEditions(start, end, success, error){
 			$('#editions').html("");
 			$.each(data.items, function(index, edition){
 				var date = edition.fixed_slash_date;
+				
 				$('#editions').append('<dt>'+
 					'<ul data-role="listview" data-inset="true" class="loc-card"><li class="loc-image">' +
 					'<div><a onclick="getSections(' + formatDate(new Date(date)) + ');"><img src="' + getEditionURL(date) + '"/></div>' +
@@ -89,13 +92,11 @@ function getEditions(start, end, success, error){
 	  		});
 			
 		    $('#editions ul').listview();
-		    $("#gotoGalleryBtn").click(function(){
-		        $.mobile.changePage(path("edition/carrousel.html?date=2013-02-19&suplemento=1737"));
-		    });
 		}
 		
     }, "json").fail(error);
 }
+
 
 function getSections(date){
 	$.mobile.loading('show', {text: "Cargando edicion...", textVisible: true});
@@ -113,7 +114,7 @@ function getSections(date){
 				
 				section.id = item.supplement_id;
 				section.title = item.cat_supplement_type_name;
-				section.date = new Date(item.edition_publication_date);
+				section.date = parseDashedDate(item.edition_publication_date);
 				section.slashDate = slashDate(section.date);
 				section.prettyDate = prettyDate(section.date);
 				section.pages = item.pages_amount;
@@ -126,30 +127,76 @@ function getSections(date){
 		window.sessionStorage.currentSection = 0;
 		
 		$.mobile.loading('hide');
-		$.mobile.changePage("edition.html");
+		$.mobile.changePage("edition_even.html");
 		
 	}, "json").fail(function(e){failure(e)});
 }
 
+function loadSections(sections){
+	if(sections == undefined){
+		sections = JSON.parse(window.sessionStorage.sections);
+	}
+	
+	$.each(sections, function(index, section){
+		$('#sections').append('<dt>'+
+			'<ul id="' + section.id + '" data-role="listview" data-inset="true" class="loc-card"><li class="loc-image">' +
+			'<div><a onclick="loadSection(' + index + ');"><img src="' + getSectionURL(section) + '"/></div>' +
+			'</li></ul></dt>'
+		);
+	});
+	$('#sections ul').listview();
+}
+
+function loadSection(dest, section){
+	$(dest + " #section").attr("src", getSectionURL(section));
+	$(dest).one("swipeleft", nextSection);
+	$(dest).one("swiperight", prevSection);
+}
+
 function nextSection(){
-	var index = parseInt(window.sessionStorage.currentSection);
+	var index = parseInt(window.sessionStorage.currentSection) + 1;
 	var sections = JSON.parse(window.sessionStorage.sections);
 	
 	if(index < sections.length){
-		window.sessionStorage.currentSection = index + 1;
-		sectionsNavigation();
+		window.sessionStorage.currentSection = index;
+		//sectionsNavigation();
+		var even = index % 2 == 0 ? "even" : "odd";
+		$.mobile.changePage("edition_" + even + ".html");
 	}
-	//alert(window.sessionStorage.currentSection);
 }
 
 function prevSection(){
 	var index = parseInt(window.sessionStorage.currentSection);
 	
 	if(index > 0){
-		window.sessionStorage.currentSection = index - 1;
-		sectionsNavigation();
+		index--;
+		window.sessionStorage.currentSection = index;
+		//sectionsNavigation();
+		var even = index % 2 == 0 ? "even" : "odd";
+		$.mobile.changePage("edition_" + even + ".html", {reverse: true});
+	}else{
+		$("#sections-panel").panel("open");
 	}
-	//alert(window.sessionStorage.currentSection);
+}
+
+function showSection(index){
+	var i = window.sessionStorage.currentSection;
+	
+	var last = i % 2 == 0 ? "even" : "odd";
+	var next = index % 2 == 0 ? "even" : "odd";
+	window.sessionStorage.currentSection = index;
+	
+	if(last != next){
+		$.mobile.changePage("edition_" + next + ".html");
+	}else{
+		var sections = JSON.parse(window.sessionStorage.sections);
+		var section = sections[index];
+		
+		$("#edition-" + next + "-page #edition-title").html(section.title);
+		loadSection("#edition-" + next + "-page", section);
+		sectionsPanel(sections);
+		$("#sections-panel").panel("close");
+	}
 }
 
 function sectionsNavigation(){
@@ -181,6 +228,28 @@ function sectionsNavigation(){
 	current.addClass("ui-btn-active ui-state-persist");
 	next.removeClass("ui-btn-active ui-state-persist");
 }
+
+function sectionsPanel(sections){
+	var index = parseInt(window.sessionStorage.currentSection);
+	if(sections == undefined){
+		sections = JSON.parse(window.sessionStorage.sections);
+	}
+	var section = sections[index];
+	
+	var panel = $("#sections-panel ul").html("");
+	var klass = "";
+	$.each(sections, function(i, section){
+		if(i == index){
+			klass = 'class="ui-btn-active"';
+		}else{
+			klass = '';
+		}
+		panel.append('<li ' + klass + '><a onclick="showSection(' + i + ');" data-role="button" data-iconpos="right">' + section.title + '<span class="ui-li-count">' + section.pages + '</span></a></li>');
+	});
+	
+	panel.listview("refresh");
+}
+
 
 function getPages(success){
 	$.mobile.loading('show', {text: "Cargando sección...", textVisible: true});
@@ -224,3 +293,109 @@ function getPages(success){
 		
 	}, "json").fail(function(e){failure(e)});
 }
+
+function loadPages(){
+	getPages(function(){
+		var pages = JSON.parse(window.sessionStorage.pages);
+		$.each(pages, function(index, page){
+			$("#pages").append('<li><a href="' + page.large + '" rel="external"><img src="' + page.medium + '" alt="Page #' + page.number + '" /></a></li>');
+		});
+		//$("#pages a").photoSwipe({allowUserZoom: true, enableMouseWheel: false, enableKeyboard: false});
+	});
+}
+
+function loadPage(page){
+	$("#section-page #page").attr("src", page.medium);
+	$(document).off("swipeleft").on("swipeleft", "#section-page", nextPage);
+	$(document).off("swiperight").on("swiperight", "#section-page", prevPage);
+}
+
+function zoomPage(page){
+	$("#zoom-page #page").attr("src", page.large);
+	$("#zoom-page #title").html("P&aacute;gina #" + page.number);
+}
+
+function nextPage(){
+	var index = parseInt(window.sessionStorage.currentPage);
+	var pages = JSON.parse(window.sessionStorage.pages);
+	
+	if(index < pages.length){
+		window.sessionStorage.currentPage = index + 1;
+		$.mobile.changePage("section.html?current=" + (index + 1), {reloadPage: false});
+	}
+}
+
+function prevPage(){
+	var index = parseInt(window.sessionStorage.currentPage);
+	var pages = JSON.parse(window.sessionStorage.pages);
+	
+	if(index > 0){
+		window.sessionStorage.currentPage = index - 1;
+		$.mobile.changePage("section.html?current=" + (index - 1), {reverse:true, reloadPage: false});
+	}
+}
+
+function getMedia(page){
+	if(page == undefined){
+		var index = parseInt(window.sessionStorage.currentPage);
+		var pages = JSON.parse(window.sessionStorage.pages);
+		page = pages[index];
+	}
+	
+	var args = {page_id: page.id};
+	var list = [];
+	
+	$.post(mediaURL, args, function(response){
+		
+		var items = response.items;
+		if(items != null){
+			$.each(items, function(index, item){
+				media = {};
+				
+				media.id = item.tag_id;
+				media.url = item.tag_url;
+				media.type = item.tipo;
+				
+				list.push(media);
+			});
+			
+			$("#media-btn").show();
+			mediaPanel(list);
+			
+			window.sessionStorage.media = JSON.stringify(list);
+			window.sessionStorage.currentMedia = 0;
+		}else{
+			$("#media-btn").hide();
+			console.log(JSON.stringify(response));
+		}
+		
+	}, "json").fail(function(e){failure(e)});
+	
+}
+
+function mediaPanel(media){
+	if(media == undefined){
+		media = JSON.parse(window.sessionStorage.media);
+	}
+	
+	var panel = $("#media-panel ul").html("");
+	$.each(media, function(i, item){
+		panel.append('<li><a onclick="showMedia(' + i + ');" data-role="button" data-iconpos="right">' + item.type + '</a></li>');
+	});
+	
+	panel.listview("refresh");
+}
+
+function showMedia(index){
+	var list = JSON.parse(window.sessionStorage.media);
+	var media = list[index];
+	window.sessionStorage.currentMedia = index;
+	
+	if(media.type = "video"){
+		$.mobile.changePage("video.html");
+	}else{
+		$.mobile.changePage("audio.html");
+	}
+}
+
+

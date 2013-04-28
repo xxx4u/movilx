@@ -11,6 +11,7 @@
 		</div>
 	</div>
 	<div data-role="content">
+		<a href="#sections-panel" data-role="button">Open panel</a>
 		<dl id="sections" data-role="list-of-cards" data-divider-theme="b" data-inset="true">
 			<dt>
 				<ul data-role="listview" data-inset="true" class="loc-card">
@@ -30,6 +31,13 @@
     		</ul>
    		</div>
     </div>
+    <div id="sections-panel" data-role="panel" data-display="overlay">
+    	<p style="margin-top:.5em; margin-bottom:2.5em">
+    		<a data-role="button" href="#" data-rel="close" data-icon="delete" data-mini="true" >Cerrar menu</a>
+   		</p>
+    	<ul data-role="listview" data-icon="arrow-r">
+    	</ul>
+    </div>
 	<script type="text/javascript">
 		$('#edition-page').on('pageinit', function(event, data){
 			var index = window.sessionStorage.currentSection;
@@ -39,6 +47,7 @@
 			$("#edition-title").html("Edición " + current.prettyDate);
 			$("#section-cover").attr("src", getSectionURL(current));
 			sectionsNavigation();
+			sectionsPanel();
 		});
 	</script>
 </div>

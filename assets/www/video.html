@@ -1,0 +1,24 @@
+<div id="video-page" data-role="page">
+	<div data-role="header" data-theme="b">
+		<a data-icon="delete" data-iconpos="notext" data-direction="reverse" data-rel="back" title="Regresar">Regresar</a>
+		<h1 id="title">Video</h1>
+	</div>
+	<div data-role="content">
+		<video id="video" controls="controls" style="width:100%; max-height:90%">
+			<source src="" type="video/mp4" />
+		</video>
+    </div>
+    <div data-role="footer" data-theme="b">
+    </div>
+    <script type="text/javascript">
+	    $('#video-page').on('pageinit', function(event){
+	    	var index = window.sessionStorage.currentMedia;
+			var list = JSON.parse(window.sessionStorage.media);
+			var media = list[index];
+			
+			if(media.type == "video"){
+				$("#video-page #video").attr("src", media.url);
+			}
+	    });
+    </script>
+</div>

@@ -1,0 +1,29 @@
+<div data-role="page" data-add-back-btn="true" id="section-pages" class="gallery-page">
+	<style>
+		.gallery { list-style: none; padding: 0; margin: 0; }
+		.gallery:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+		.gallery li { float: left; width: 33.33333333%; }
+		.gallery li a { display: block; margin: 5px; border: 1px solid #3c3c3c; }
+		.gallery li img { display: block; width: 100%; height: auto; }
+		#Gallery1 .ui-content, #Gallery2 .ui-content { overflow: hidden; }
+	</style>
+	<div data-role="header">
+		<h1>Section</h1>
+	</div>
+	<div data-role="content">
+		<ul id="pages" class="gallery">
+		</ul>
+	</div>
+	<div data-role="footer">
+		<h4>&copy; 2011 Code Computerlove</h4>
+	</div>
+	<script src="vendor/js/klass.js"></script>
+	<script src="vendor/js/photoswipe.js"></script>
+    <script type="text/javascript">
+	    $('#section-pages').on('pageinit', function(event){
+	    	$(document).ready(function(){
+	    		loadPages();
+	    	});
+	    });
+    </script>
+</div>

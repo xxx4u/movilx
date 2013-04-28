@@ -1,0 +1,49 @@
+<div id="edition-odd-page" data-role="page">
+	<div id="sections-panel" data-role="panel" data-display="overlay">
+    	<p style="margin-top:.5em; margin-bottom:2.5em">
+    		<a data-role="button" href="#" data-rel="close" data-icon="delete" data-mini="true" >Cerrar menu</a>
+   		</p>
+    	<ul data-role="listview" data-icon="arrow-r">
+    	</ul>
+    </div>
+	<div data-id="header" data-role="header" data-position="fixed">
+		<a href="editions.html" data-icon="back" data-iconpos="left" data-reverse="true" title="Regresar">Atr&aacute;s</a>
+		<h1 id="edition-title"></h1>
+		<a href="#sections-panel" data-role="button" data-icon="bars" data-iconpos="notext">Secciones</a>
+	</div>
+	<div data-role="content">
+		<dl id="sections" data-role="list-of-cards" data-divider-theme="b" data-inset="true">
+			<dt>
+				<ul data-role="listview" data-inset="true" class="loc-card">
+					<li class="loc-image">
+						<div><a onclick="goToSection();"><img id="section" src="vendor/css/images/ajax-loader.png"/></a></div>
+					</li>
+				</ul>
+			</dt>
+		</dl>
+	</div>
+	<div data-role="footer" data-id="tab1" data-position="fixed" data-fullscreen="true">
+        <div data-role="navbar">
+        	<ul>
+        		<li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist">Inicio</a></li>
+        		<li><a href="#" data-icon="star" onclick="goToEditionsPage();">Mis Ediciones</a></li>
+       			<li><a href="#" data-icon="gear" onclick="goToProfilePage();">Mi cuenta</a></li>
+    		</ul>
+   		</div>
+    </div>
+	<script type="text/javascript">
+		$("#edition-odd-page").on("pageinit", function(event){
+			
+			var index = window.sessionStorage.currentSection;
+			var sections = JSON.parse(window.sessionStorage.sections);
+			var section = sections[index];
+			
+			$("#edition-odd-page #edition-title").html(section.title);
+			loadSection("#edition-odd-page", section);
+			sectionsPanel(sections);
+		});
+		
+		$(document).bind("pagechange", function(event, data){
+		});
+	</script>
+</div>

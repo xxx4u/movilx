@@ -40,6 +40,12 @@ function parseDate(string){
 	return new Date(a[3],a[2]-1,a[1]);
 }
 
+function parseDashedDate(string){
+	var regex = /(\d{4})-(\d{2})-(\d{2})/;
+	var a = regex.exec(string);
+	return new Date(a[1],a[2]-1,a[3]);
+}
+
 function formatDate(date){
 	var yyyy = date.getFullYear().toString();
 	var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
