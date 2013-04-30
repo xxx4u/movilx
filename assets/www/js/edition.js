@@ -2,6 +2,7 @@ var editionsURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/geteditions.
 var sectionsURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/getsections.php";
 var pagesURL    = "http://media.nuestrodiario.com/MovilX/mobileOps2/getpages_section.php";
 var mediaURL    = "http://media.nuestrodiario.com/MovilX/mobileOps2/getmedia_page.php";
+var tabsURL		= "http://media.nuestrodiario.com/MovilX/mobileOps2/gettabs.php";
 
 function failure(e){
 	console.log(JSON.stringify(e));
@@ -251,6 +252,66 @@ function sectionsPanel(sections){
 }
 
 
+function getTabs(section){
+	if(section == undefined){
+		var index = window.sessionStorage.currentSection;
+		var sections = JSON.parse(window.sessionStorage.sections);
+		section = sections[index];
+	}
+	console.log(section.id);
+	var args = {sup_id: section.id};
+	var tabs = [];
+	
+	$.post(tabsURL, args, function(response){
+		var items = response.items;
+		var tab;
+		
+		if(items != null){
+			$.each(items, function(index, item){
+				tab = {};
+				
+				tab.id = item.cat_tab_detail_id;
+				tab.title = item.cat_tab_detail_name;
+				tab.page_number = item.page_number;
+				tab.page_id = item.page_id;
+				//page.base_url = item.base_url + item.year + "/" + item.month + "/" + item.day + "/" + item.folder + "/"
+				
+				//page.small = page.base_url + item.small;
+				//page.medium = page.base_url + item.medium;
+				//page.large = page.base_url + item.large;
+				
+				tabs.push(tab);
+			});
+			window.sessionStorage.tabs = JSON.stringify(tabs);
+		}else{
+			console.log(JSON.stringify(response));
+		}
+		
+	}, "json").fail(function(e){failure(e)});
+}
+
+function tabsPanel(pages, tabs){
+	var index = parseInt(window.sessionStorage.currentPage);
+	if(typeof tabs == "undefined"){
+		tabs = JSON.parse(window.sessionStorage.tabs);
+	}
+	
+	var panel = $("#tabs-panel ul").html("");
+	var klass = "";
+	$.each(pages, function(i, page){
+		if(i == index){
+			klass = 'class="ui-btn-active"';
+		}else{
+			klass = '';
+		}
+		panel.append('<li ' + klass + '><a onclick="showPage(' + page.number + ');" data-role="button" data-iconpos="right"> Página #' + (i + 1) + '</a></li>');
+	});
+	
+	panel.listview("refresh");
+}
+
+
+
 function getPages(success){
 	$.mobile.loading('show', {text: "Cargando sección...", textVisible: true});
 	
@@ -337,12 +398,12 @@ function prevPage(){
 
 function zoomPage(page){
 	$("#zoom-page #page").attr("src", page.large);
-	$("#zoom-page #title").html("P&aacute;gina #" + page.number);
+	$("#zoom-page #subtitle").html("P&aacute;gina #" + page.number);
 	
 	var index = parseInt(window.sessionStorage.currentSection);
 	var sections = JSON.parse(window.sessionStorage.sections);
 	var section = sections[index];
-	$("#zoom-page #subtitle").html(section.title);
+	$("#zoom-page #title").html(section.title);
 }
 
 function zoomNext(){

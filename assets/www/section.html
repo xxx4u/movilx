@@ -1,4 +1,10 @@
 <div id="section-page" data-role="page">
+	<div id="tabs-panel" data-role="panel" data-display="overlay">
+    	<p style="margin-top:.5em; margin-bottom:2.5em">
+    		<a data-role="button" href="#" data-rel="close" data-icon="delete" data-mini="true" >Cerrar menu</a>
+   		</p>
+    	<ul data-role="listview" data-icon="arrow-r"></ul>
+    </div>
 	<div id="media-panel" data-role="panel" data-display="overlay">
     	<p style="margin-top:.5em; margin-bottom:2.5em">
     		<a data-role="button" href="#" data-rel="close" data-icon="delete" data-mini="true" >Cerrar menu</a>
@@ -8,7 +14,7 @@
 	<div data-id="header" data-role="header" data-position="fixed">
 		<a id="back" data-icon="back" data-iconpos="left" data-direction="reverse" title="Regresar">Atr&aacute;s</a>
 		<h1 id="title"></h1>
-		<a id="media-btn" href="#media-panel" data-role="button" data-icon="plus" data-iconpos="notext" style="display:none">Multimedia</a>
+		<a id="tabs-btn" href="#tabs-panel" data-role="button" data-icon="bars" data-iconpos="left">Ir a</a>
 	</div>
 	<div data-role="content">
 		<dl id="pages" data-role="list-of-cards" data-divider-theme="b" data-inset="true">
@@ -22,6 +28,8 @@
 		</dl>
 	</div>
 	<div data-role="footer" data-id="tab1" data-position="fixed">
+		<h1 id="subtitle"></h1>
+		<a id="media-btn" href="#media-panel" class="ui-btn-right" data-role="button" data-icon="plus" data-iconpos="left" style="display:none">Multimedia</a>
         <div data-role="navbar" data-iconpos="left">
         	<ul>
         		<li><a href="editions.html" data-icon="home">Inicio</a></li>
@@ -31,9 +39,14 @@
     </div>
 	<script type="text/javascript">
         $(document).one("pagechange", function(event, data){
-        	var index = parseInt(window.sessionStorage.currentPage);
+        	var index = parseInt(window.sessionStorage.currentSection);
+        	var sections = JSON.parse(window.sessionStorage.sections);
+			var section = sections[index];
+			index = parseInt(window.sessionStorage.currentPage);
+			
+        	$("#title").html(section.title);
+        	$("#subtitle").html("P&aacute;gina #" + (index + 1));
         	
-        	$("#title").html("P&aacute;gina #" + (index + 1));
         	$("#back").attr("href", "edition_" + ((index % 2 == 0) ? "even" : "odd") + ".html");
 			
 			var pages = JSON.parse(window.sessionStorage.pages);
@@ -41,6 +54,7 @@
 			
 			loadPage(page);
 			getMedia(page);
+			tabsPanel(pages);
         });
         
         $(document).on("pagechange", function(event, data){

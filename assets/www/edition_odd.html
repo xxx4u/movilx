@@ -9,7 +9,7 @@
 	<div data-id="header" data-role="header" data-position="fixed">
 		<!--<a href="editions.html" data-icon="back" data-iconpos="left" data-direction="reverse" title="Regresar">Atr&aacute;s</a>-->
 		<h1 id="edition-title"></h1>
-		<a href="#sections-panel" data-role="button" data-icon="bars" data-iconpos="notext" class="ui-btn-right">Secciones</a>
+		<a href="#sections-panel" data-role="button" data-icon="bars" data-iconpos="left" class="ui-btn-right">Secciones</a>
 	</div>
 	<div data-role="content">
 		<dl id="sections" data-role="list-of-cards" data-divider-theme="b" data-inset="true">
@@ -48,6 +48,7 @@
 			$("#edition-odd-page #edition-title").html(section.title);
 			loadSection("#edition-odd-page", section);
 			sectionsPanel(sections);
+			getTabs(section);
 		});
 	</script>
 </div>
