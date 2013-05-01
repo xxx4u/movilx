@@ -2,7 +2,6 @@
 	<div data-role="header" data-position="fixed">
 		<a href="editions.html" data-icon="back" data-iconpos="left" data-direction="reverse" data-rel="back" title="Regresar">Atr&aacute;s</a>
 		<h1>Mi cuenta</h1>
-		<a onclick="logout();" data-icon="delete" data-iconpos="left" title="Cerrar Sesi&oacuten">Salir</a>
 	</div>
 	<div id="content" data-role="content">
 		<form id="user-profile-form">
@@ -30,11 +29,15 @@
 	    	<ul>
 	    		<li><a href="editions.html" data-icon="home">Inicio</a></li>
 	    		<li><a href="#" data-icon="gear" class="ui-btn-active ui-state-persist">Mi Cuenta</a></li>
+	    		<li><a href="#" onclick="logout();" data-icon="delete">Salir</a></li>
 			</ul>
 		</div>
     </div>
     <script src="vendor/js/jquery.validate.js"></script>
     <script type="text/javascript">
+	    $('#user-profile-page').on('pagebeforecreate', function(event){
+			signed_in(event);
+		});
     	$("#user-profile-page").on('pageinit', function(event){
     		profile();
     		$("#user-profile-form").validate({errorPlacement: errorPlacement, submitHandler:

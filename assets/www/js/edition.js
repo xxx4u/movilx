@@ -258,7 +258,7 @@ function getTabs(section){
 		var sections = JSON.parse(window.sessionStorage.sections);
 		section = sections[index];
 	}
-	console.log(section.id);
+	//console.log(section.id);
 	var args = {sup_id: section.id};
 	var tabs = [];
 	
@@ -437,6 +437,7 @@ function getMedia(page){
 	}
 	
 	var args = {page_id: page.id};
+	//var args = {page_id: 15228};
 	var list = [];
 	
 	$.post(mediaURL, args, function(response){
@@ -447,6 +448,8 @@ function getMedia(page){
 				
 				media.id = item.tag_id;
 				media.url = item.tag_url;
+				media.title = item.tag_title;
+				media.description = item.tag_text;
 				media.type = item.tipo;
 				
 				list.push(media);
@@ -471,9 +474,11 @@ function mediaPanel(media){
 		media = JSON.parse(window.sessionStorage.media);
 	}
 	
+	var title;
 	var panel = $("#media-panel ul").html("");
 	$.each(media, function(i, item){
-		panel.append('<li><a onclick="showMedia(' + i + ');" data-role="button" data-iconpos="right">' + item.type + '</a></li>');
+		title = item.title || item.type;
+		panel.append('<li><a onclick="showMedia(' + i + ');" data-role="button" data-iconpos="right">' + title + '</a></li>');
 	});
 	
 	panel.listview("refresh");

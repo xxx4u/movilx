@@ -11,6 +11,13 @@ function failure(e){
 	$.mobile.loading('hide');
 }
 
+function signed_in(event){
+	if(typeof window.localStorage.session == "undefined"){
+		event.preventDefault();
+		$.mobile.changePage("index.html", {transition: "none"});
+	}
+}
+
 function login(username, password, success, error){
     $.post(signinURL, {username: username, password: password}, function(response){
     	if(success){
@@ -172,6 +179,7 @@ function logout(){
         	window.localStorage.removeItem("username");
         	window.localStorage.removeItem("password");
             window.localStorage.removeItem("session");
+            
             $.mobile.changePage("index.html");
         }else{
         	//window.localStorage.removeItem("username");

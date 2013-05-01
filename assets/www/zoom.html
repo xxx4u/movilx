@@ -21,13 +21,9 @@
     </div>
     <script src="vendor/js/iscroll.js"></script>
     <script type="text/javascript">
-	    $('#zoom-page').on('pageinit', function(event){
-	    	//console.log("zoom pageinit");
-	    });
-	    $('#zoom-page').on('pageload', function(event){
-	    	//console.log("zoom pageload");
-	    });
-	    
+	    $('#zoom-page').on('pagebeforecreate', function(event){
+			signed_in(event);
+		});
 	    $('#zoom-page').on('pageinit', function(event){
 	    	var index = window.sessionStorage.currentPage;
 			var pages = JSON.parse(window.sessionStorage.pages);
@@ -40,6 +36,13 @@
 	    
 	    $('#zoom-page').on('pagehide', function(event){
 	    	document.removeEventListener('touchmove', preventScroll, false);
+	    });
+	    
+	    $('#zoom-page').on('pageinit', function(event){
+	    	//console.log("zoom pageinit");
+	    });
+	    $('#zoom-page').on('pageload', function(event){
+	    	//console.log("zoom pageload");
 	    });
     </script>
 </div>

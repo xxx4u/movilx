@@ -31,11 +31,15 @@
         		<li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist">Inicio</a></li>
 				<!--<li><a href="#" data-icon="star" onclick="goToEditionsPage();">Mis Ediciones</a></li>-->
        			<li><a href="profile.html" data-icon="gear">Mi cuenta</a></li>
+       			<li><a href="#" onclick="logout();" data-icon="delete">Salir</a></li>
     		</ul>
    		</div>
     </div>
     <script src="js/edition.js"></script>
     <script type="text/javascript">
+    	$('#editions-page').on('pagebeforecreate', function(event){
+    		signed_in(event);
+    	});
 	    $('#editions-page').on('pageinit', function(event){
 	    	
 	    	$("#start-date").val(prettyDate(lastWeek()));

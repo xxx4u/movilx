@@ -7,15 +7,24 @@
 		<video id="video" controls="controls" style="width:100%; max-height:90%">
 			<source src="" type="video/mp4" />
 		</video>
+		<hr/>
+		<div class="description">
+			<p><h4 id="description"></h4></p>
+		</div>
     </div>
     <div data-role="footer" data-theme="b">
     </div>
     <script type="text/javascript">
+	    $('#video-page').on('pagebeforecreate', function(event){
+			signed_in(event);
+		});
 	    $('#video-page').on('pageinit', function(event){
 	    	var index = window.sessionStorage.currentMedia;
 			var list = JSON.parse(window.sessionStorage.media);
 			var media = list[index];
 			
+			$("#video-page #title").html(media.title || "Video");
+			$("#video-page #description").html(media.description);
 			if(media.type == "video"){
 				$("#video-page #video").attr("src", media.url);
 			}

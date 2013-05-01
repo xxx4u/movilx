@@ -7,15 +7,24 @@
 		<audio id="audio" controls="controls" style="width:100%">
 			<source src="" type="audio/mpeg" />
 		</audio>
+		<div class="description">
+			<p><h4 id="description"></h4></p>
+		</div>
     </div>
     <div data-role="footer" data-theme="b">
     </div>
     <script type="text/javascript">
+	    $('#audio-page').on('pagebeforecreate', function(event){
+			signed_in(event);
+		});
+	    
 	    $('#audio-page').on('pageinit', function(event){
 	    	var index = window.sessionStorage.currentMedia;
 			var list = JSON.parse(window.sessionStorage.media);
 			var media = list[index];
 			
+			$("#audio-page #title").html(media.title || "Audio");
+		    $("#audio-page #description").html(media.description);
 			if(media.type == "audio"){
 				$("#audio-page #audio").attr("src", media.url);
 			}

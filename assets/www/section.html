@@ -34,10 +34,14 @@
         	<ul>
         		<li><a href="editions.html" data-icon="home">Inicio</a></li>
        			<li><a href="profile.html" data-icon="gear">Mi cuenta</a></li>
+       			<li><a href="#" onclick="logout();" data-icon="delete">Salir</a></li>
     		</ul>
    		</div>
     </div>
 	<script type="text/javascript">
+		$('#section-page').on('pagebeforecreate', function(event){
+			signed_in(event);
+		});
         $(document).one("pagechange", function(event, data){
         	var index = parseInt(window.sessionStorage.currentSection);
         	var sections = JSON.parse(window.sessionStorage.sections);
