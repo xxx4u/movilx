@@ -253,12 +253,11 @@ function sectionsPanel(sections){
 
 
 function getTabs(section){
-	if(section == undefined){
+	if(typeof section == "undefined"){
 		var index = window.sessionStorage.currentSection;
 		var sections = JSON.parse(window.sessionStorage.sections);
 		section = sections[index];
 	}
-	//console.log(section.id);
 	var args = {sup_id: section.id};
 	var tabs = [];
 	
@@ -293,7 +292,7 @@ function getTabs(section){
 function tabsPanel(pages, tabs){
 	var index = parseInt(window.sessionStorage.currentPage);
 	if(typeof tabs == "undefined"){
-		tabs = JSON.parse(window.sessionStorage.tabs);
+		//tabs = JSON.parse(window.sessionStorage.tabs);
 	}
 	
 	var panel = $("#tabs-panel ul").html("");
@@ -386,7 +385,7 @@ function nextPage(){
 
 function prevPage(){
 	var index = parseInt(window.sessionStorage.currentPage);
-	var pages = JSON.parse(window.sessionStorage.pages);
+	//var pages = JSON.parse(window.sessionStorage.pages);
 	
 	if(index > 0){
 		window.sessionStorage.currentPage = index - 1;
@@ -394,6 +393,10 @@ function prevPage(){
 	}
 }
 
+function showPage(number){
+	window.sessionStorage.currentPage = number;
+	$.mobile.changePage("section.html?current=" + (number), {reverse: true});
+}
 
 
 function zoomPage(page){
