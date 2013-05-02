@@ -303,7 +303,7 @@ function tabsPanel(pages, tabs){
 		}else{
 			klass = '';
 		}
-		panel.append('<li ' + klass + '><a onclick="showPage(' + page.number + ');" data-role="button" data-iconpos="right"> Página #' + (i + 1) + '</a></li>');
+		panel.append('<li ' + klass + '><a onclick="showPage(' + i + ');" data-role="button" data-iconpos="right"> Página #' + page.number + '</a></li>');
 	});
 	
 	panel.listview("refresh");
