@@ -2,6 +2,11 @@ String.prototype.toSnake = function(){
 	return this.replace(/ /, "_").toLowerCase();
 };
 
+function loadURL(url){
+    navigator.app.loadUrl(url, {openExternal: true});
+    return false;
+}
+
 function preventScroll(e){
 	e.preventDefault();
 }
