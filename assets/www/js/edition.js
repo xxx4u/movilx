@@ -303,7 +303,7 @@ function tabsPanel(pages, tabs){
 		}else{
 			klass = '';
 		}
-		panel.append('<li ' + klass + '><a onclick="showPage(' + i + ');" data-role="button" data-iconpos="right"> Página #' + page.number + '</a></li>');
+		panel.append('<li id="tab-' + i + '"' + klass + '><a onclick="showPage(' + i + ');" data-role="button" data-iconpos="right"> Página #' + page.number + '</a></li>');
 	});
 	
 	panel.listview("refresh");
@@ -411,6 +411,8 @@ function showPage(number){
 	$("#section-page #back").attr("href", "edition_" + ((number % 2 == 0) ? "even" : "odd") + ".html");
 	loadPage(page);
 	$("#tabs-panel").panel("close");
+	$("#tabs-panel ul .ui-btn-active").removeClass("ui-btn-active")
+	$("#tabs-panel ul #tab-" + number).addClass("ui-btn-active");
 	
 	//$.mobile.changePage("section.html?current=" + (number), {reverse: true});
 }
