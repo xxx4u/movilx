@@ -364,7 +364,8 @@ function loadPages(){
 	});
 }
 
-function loadPage(page){
+function loadPage(page, section){
+	
 	$("#section-page #page").attr("src", page.medium);
 	$("#section-page #zoom").attr("href", "zoom.html?index=" + page.number);
 	//$("#section-page #zoom").attr("data-prefetch", "true");
@@ -378,8 +379,9 @@ function nextPage(){
 	var pages = JSON.parse(window.sessionStorage.pages);
 	
 	if(index < pages.length){
-		window.sessionStorage.currentPage = index + 1;
-		$.mobile.changePage("section.html?current=" + (index + 1));
+		//window.sessionStorage.currentPage = index + 1;
+		//$.mobile.changePage("section.html?current=" + (index + 1));
+		showPage(index + 1);
 	}
 }
 
@@ -388,14 +390,29 @@ function prevPage(){
 	//var pages = JSON.parse(window.sessionStorage.pages);
 	
 	if(index > 0){
-		window.sessionStorage.currentPage = index - 1;
-		$.mobile.changePage("section.html?current=" + (index - 1), {reverse: true});
+		//window.sessionStorage.currentPage = index - 1;
+		//$.mobile.changePage("section.html?current=" + (index - 1), {reverse: true});
+		showPage(index - 1);
 	}
 }
 
 function showPage(number){
+	var pages = JSON.parse(window.sessionStorage.pages);
+	var page = pages[number];
+	
+	var index = JSON.parse(window.sessionStorage.currentSection);
+	var sections = JSON.parse(window.sessionStorage.sections);
+	var section = sections[index];
+	
 	window.sessionStorage.currentPage = number;
-	$.mobile.changePage("section.html?current=" + (number), {reverse: true});
+	
+	$("#section-page #title").html(section.title);
+	$("#section-page #subtitle").html("P&aacute;gina #" + page.number);
+	$("#section-page #back").attr("href", "edition_" + ((number % 2 == 0) ? "even" : "odd") + ".html");
+	loadPage(page);
+	$("#tabs-panel").panel("close");
+	
+	//$.mobile.changePage("section.html?current=" + (number), {reverse: true});
 }
 
 

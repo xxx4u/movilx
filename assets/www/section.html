@@ -48,11 +48,6 @@
 			var section = sections[index];
 			index = parseInt(window.sessionStorage.currentPage);
 			
-        	$("#title").html(section.title);
-        	$("#subtitle").html("P&aacute;gina #" + (index + 1));
-        	
-        	$("#back").attr("href", "edition_" + ((index % 2 == 0) ? "even" : "odd") + ".html");
-			
 			var pages = JSON.parse(window.sessionStorage.pages);
 			var page = pages[index];
 			
