@@ -421,7 +421,15 @@ function showPage(number){
 
 
 function zoomPage(page){
-	$("#zoom-page #page").attr("src", page.large);
+	$("#zoom-page #page").attr("src", page.medium);
+	window.loadImage(page.large, function(img){
+        if(img.type === 'error'){
+            console.log('Error loading image ' + page.large);
+        }else{
+        	//console.log('large image loading completed.');
+        	$("#zoom-page #page").attr("src", page.large);
+        }
+    },{});
 	$("#zoom-page #subtitle").html("P&aacute;gina #" + page.number);
 	
 	var index = parseInt(window.sessionStorage.currentSection);
