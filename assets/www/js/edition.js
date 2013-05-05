@@ -283,6 +283,7 @@ function getTabs(section){
 			});
 			window.sessionStorage.tabs = JSON.stringify(tabs);
 		}else{
+			window.sessionStorage.tabs = JSON.stringify([]);
 			console.log(JSON.stringify(response));
 		}
 		
@@ -292,19 +293,32 @@ function getTabs(section){
 function tabsPanel(pages, tabs){
 	var index = parseInt(window.sessionStorage.currentPage);
 	if(typeof tabs == "undefined"){
-		//tabs = JSON.parse(window.sessionStorage.tabs);
+		tabs = JSON.parse(window.sessionStorage.tabs);
 	}
 	
 	var panel = $("#tabs-panel ul").html("");
 	var klass = "";
-	$.each(pages, function(i, page){
-		if(i == index){
-			klass = 'class="ui-btn-active"';
-		}else{
-			klass = '';
-		}
-		panel.append('<li id="tab-' + i + '"' + klass + '><a onclick="showPage(' + i + ');" data-role="button" data-iconpos="right"> Página #' + page.number + '</a></li>');
-	});
+	
+	if(tabs.length == 0){
+		$.each(pages, function(i, page){
+			if(i == index){
+				klass = 'class="ui-btn-active"';
+			}else{
+				klass = '';
+			}
+			panel.append('<li id="tab-' + i + '"' + klass + '><a onclick="showPage(' + i + ');" data-role="button" data-iconpos="right"> Página #' + page.number + '</a></li>');
+		});
+	}else{
+		$.each(tabs, function(i, tab){
+			if(i == index){
+				klass = 'class="ui-btn-active"';
+			}else{
+				klass = '';
+			}
+			panel.append('<li id="tab-' + i + '"' + klass + '><a onclick="showPage(' + (tab.page_number - 1) + ');" data-role="button" data-iconpos="right">' + tab.title + '</a></li>');
+		});
+	}
+	
 	
 	panel.listview("refresh");
 }
@@ -354,22 +368,16 @@ function getPages(success){
 	}, "json").fail(function(e){failure(e)});
 }
 
-function loadPages(){
-	getPages(function(){
-		var pages = JSON.parse(window.sessionStorage.pages);
-		$.each(pages, function(index, page){
-			$("#pages").append('<li><a href="' + page.large + '" rel="external"><img src="' + page.medium + '" alt="Page #' + page.number + '" /></a></li>');
-		});
-		//$("#pages a").photoSwipe({allowUserZoom: true, enableMouseWheel: false, enableKeyboard: false});
+function loadPages(pages){
+	$('#section-page #pages').html();
+	$.each(pages, function(index, page){
+		$('#section-page #pages').append('<dt style="display:none">'+
+			'<ul data-role="listview" data-inset="true" class="loc-card"><li class="loc-image">' +
+			'<div><a href="zoom.html"><img src="' + page.medium + '" alt="Page #' + page.number + '"/></a></div>' +
+			'</li></ul></dt>'
+		);
 	});
-}
-
-function loadPage(page, section){
-	
-	$("#section-page #page").attr("src", page.medium);
-	$("#section-page #zoom").attr("href", "zoom.html?index=" + page.number);
-	//$("#section-page #zoom").attr("data-prefetch", "true");
-	
+	$('#section-page #pages ul').listview();
 	$(document).off("swipeleft").on("swipeleft", "#section-page", nextPage);
 	$(document).off("swiperight").on("swiperight", "#section-page", prevPage);
 }
@@ -378,43 +386,37 @@ function nextPage(){
 	var index = parseInt(window.sessionStorage.currentPage);
 	var pages = JSON.parse(window.sessionStorage.pages);
 	
-	if(index < pages.length){
-		//window.sessionStorage.currentPage = index + 1;
-		//$.mobile.changePage("section.html?current=" + (index + 1));
+	if(index + 1 < pages.length){
 		showPage(index + 1);
 	}
 }
 
 function prevPage(){
 	var index = parseInt(window.sessionStorage.currentPage);
-	//var pages = JSON.parse(window.sessionStorage.pages);
 	
 	if(index > 0){
-		//window.sessionStorage.currentPage = index - 1;
-		//$.mobile.changePage("section.html?current=" + (index - 1), {reverse: true});
 		showPage(index - 1);
+	}else{
+		$('#tabs-panel').panel('open');
 	}
 }
 
 function showPage(number){
-	var pages = JSON.parse(window.sessionStorage.pages);
-	var page = pages[number];
-	
-	var index = JSON.parse(window.sessionStorage.currentSection);
-	var sections = JSON.parse(window.sessionStorage.sections);
-	var section = sections[index];
-	
+	if(typeof number == "undefined"){
+		number = 0;
+	}
 	window.sessionStorage.currentPage = number;
 	
-	$("#section-page #title").html(section.title);
-	$("#section-page #subtitle").html("P&aacute;gina #" + page.number);
-	$("#section-page #back").attr("href", "edition_" + ((number % 2 == 0) ? "even" : "odd") + ".html");
-	loadPage(page);
-	$("#tabs-panel").panel("close");
-	$("#tabs-panel ul .ui-btn-active").removeClass("ui-btn-active")
-	$("#tabs-panel ul #tab-" + number).addClass("ui-btn-active");
+	$('#section-page #subtitle').html('P&aacute;gina #' + (number + 1));
+	$('#section-page #pages dt.current').hide().toggleClass('current');
+	$('#section-page #pages dt:nth-child(' + (number + 1) + ')').show().toggleClass('current');
 	
-	//$.mobile.changePage("section.html?current=" + (number), {reverse: true});
+	$('#tabs-panel').panel('close');
+	$('#tabs-panel ul .ui-btn-active').removeClass('ui-btn-active')
+	$('#tabs-panel ul #tab-' + number).addClass('ui-btn-active');
+	
+	getMedia();
+	$('html,body').animate({scrollTop: 0}, 0);
 }
 
 
@@ -452,7 +454,7 @@ function zoomLast(){
 
 
 function getMedia(page){
-	if(page == undefined){
+	if(typeof page == "undefined"){
 		var index = parseInt(window.sessionStorage.currentPage);
 		var pages = JSON.parse(window.sessionStorage.pages);
 		page = pages[index];
@@ -484,7 +486,7 @@ function getMedia(page){
 			window.sessionStorage.currentMedia = 0;
 		}else{
 			$("#section-page #media-btn").hide();
-			console.log(JSON.stringify(response));
+			//console.log(JSON.stringify(response));
 		}
 		
 	}, "json").fail(function(e){failure(e)});

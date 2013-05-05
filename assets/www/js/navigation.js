@@ -11,6 +11,7 @@ function goToProfilePage(){
 }
 
 function goToSection(){
-	getPages(function(){$.mobile.changePage("section.html", {reloadPage: true});});
+	getPages(function(){$.mobile.changePage("pages.html", {reloadPage: true});});
+	//getPages(function(){$.mobile.changePage("section.html", {reloadPage: true});});
 	//$.mobile.changePage("pages.html", {reloadPage: true});
 }
