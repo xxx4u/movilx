@@ -12,6 +12,10 @@
 		<a href="#sections-panel" data-role="button" data-icon="bars" data-iconpos="left" class="ui-btn-right">Secciones</a>
 	</div>
 	<div data-role="content">
+		<div id="loader" class="ui-loader ui-corner-all ui-body-a ui-loader-verbose">
+			<span class="ui-icon ui-icon-loading"></span>
+			<h1>Cargando...</h1>
+		</div>
 		<dl id="sections" data-role="list-of-cards" data-divider-theme="b" data-inset="true">
 			<dt>
 				<ul data-role="listview" data-inset="true" class="loc-card">
@@ -21,6 +25,11 @@
 				</ul>
 			</dt>
 		</dl>
+		<fieldset class="ui-grid-b">
+		    <div class="ui-block-a"><a href="#" onclick="prevSection();" data-mini="true" data-icon="arrow-l" data-role="button" data-iconpos="left">Anterior</a></div>
+		    <div class="ui-block-b"><a href="sections-help.html" data-rel="dialog" data-transition="pop" data-mini="true" data-icon="info" data-role="button" data-iconpos="left">Ayuda</a></div>
+		    <div class="ui-block-c"><a href="#" onclick="nextSection();" data-mini="true" data-icon="arrow-r" data-role="button" data-iconpos="right">Siguiente</a></div>
+		</fieldset>
 	</div>
 	<div data-role="footer" data-id="tab1" data-position="fixed">
         <div data-role="navbar" data-iconpos="left">
@@ -35,13 +44,13 @@
 		$('#edition-even-page').on('pagebeforecreate', function(event){
 			signed_in(event);
 		});
-		$("#edition-even-page").on("pageinit", function(event){
+		$('#edition-even-page').on('pageinit', function(event){
 			var index = window.sessionStorage.currentSection;
 			var sections = JSON.parse(window.sessionStorage.sections);
 			var section = sections[index];
 			
-			$("#edition-even-page #edition-title").html(section.title);
-			loadSection("#edition-even-page", section);
+			$('#edition-even-page #edition-title').html(section.title);
+			loadSection('#edition-even-page', section);
 			sectionsPanel(sections);
 			getTabs(section);
 			//$.mobile.loadPage("edition_odd.html", {showLoadMsg: false});

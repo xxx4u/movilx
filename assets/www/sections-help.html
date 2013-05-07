@@ -1,0 +1,16 @@
+<div id="help-page" data-role="page" data-overlay-theme="d">
+	<div data-role="header" data-theme="b">
+		<h1 id="title">Ayuda</h1>
+	</div>
+	<div data-role="content">
+		<h3>¿Cómo navegar por las secciones de una edición?</h3>
+		<p>Para navegar por la edición, puedes deslizar la portada de cada sección de derecha a izquierda para avanzar, y de izquierda a derecha para retroceder.</p>
+		<p>Además, puedes hacer tap sobre la misma para ver esa sección en detalle.</p>
+		<a data-role="button" data-icon="delete" data-iconpos="left" data-direction="reverse" data-rel="back" title="Regresar">Regresar</a>
+    </div>
+    <script type="text/javascript">
+	    $('#help-page').on('pagebeforecreate', function(event){
+			signed_in(event);
+		});
+    </script>
+</div>

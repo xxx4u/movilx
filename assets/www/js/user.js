@@ -182,9 +182,6 @@ function logout(){
             
             $.mobile.changePage("index.html");
         }else{
-        	//window.localStorage.removeItem("username");
-        	//window.localStorage.removeItem("password");
-            //window.localStorage.removeItem("session");
             navigator.notification.alert("Error:" + response.error[0].text, function(){}, "Error", "Aceptar");
         }
         
