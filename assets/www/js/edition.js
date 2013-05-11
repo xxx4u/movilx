@@ -84,7 +84,7 @@ function getEditions(start, end, success, error){
 			$('#editions-page #editions').html("");
 			$.each(data.items, function(index, edition){
 				var date = edition.fixed_slash_date;
-				
+				console.log(getEditionURL(date));
 				$('#editions-page #editions').append('<dt>'+
 					'<ul data-role="listview" data-inset="true" class="loc-card"><li class="loc-image">' +
 					'<div><a onclick="getSections(' + formatDate(new Date(date)) + ');"><img src="' + getEditionURL(date) + '"/></div>' +

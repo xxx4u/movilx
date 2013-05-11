@@ -1,4 +1,4 @@
-#pages > dt{
+#pages > dt, #editions > dt{
 	max-width:85%;
 	margin:0 auto;
 }

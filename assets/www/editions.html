@@ -1,8 +1,13 @@
 <div id="editions-page" data-role="page">
 	<div data-role="header" data-position="fixed">
-		<h1>Buscar edici&oacute;n</h1>
+		<h1>Edición del día</h1>
 	</div>
 	<div data-role="content">
+        <dl id="editions" data-role="list-of-cards" data-inset="true">
+            <dt style="text-align:center">
+                <h4>Busca ediciones por rango de fecha.</h4>
+            </dt>
+        </dl>
 		<div class="ui-grid-a">
 			<div class="ui-block-a">
 				<div data-role="fieldcontain" class="ui-hide-label">
@@ -20,10 +25,6 @@
 			</div>
 		</div>
 		<a id="submit-button" onclick="searchEditions();" data-role="button" data-icon="search">Buscar</a>
-		
-		<dl id="editions" data-role="list-of-cards" data-inset="true">
-			<dt style="text-align:center"><h4>Busca ediciones por rango de fecha.</h4></dt>
-		</dl>
 	</div>
     <div data-role="footer" data-position="fixed" data-id="tab1">
         <div data-role="navbar" data-iconpos="left">
@@ -42,9 +43,9 @@
     	});
 	    $('#editions-page').on('pageinit', function(event){
 	    	
-	    	$("#start-date").val(prettyDate(lastWeek()));
+	    	$("#start-date").val(prettyDate(today()));
 	    	$("#end-date").val(prettyDate(today()));
-	    	getEditions();
+	    	searchEditions();
 	    });
     </script>
 </div>
