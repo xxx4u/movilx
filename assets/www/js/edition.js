@@ -254,7 +254,7 @@ function sectionsPage(sections){
 	images['Regional Centro'] = 'centro_occidente';
 	images['Regional SurOccidente'] = 'sur_occidente';
     images['Regional SurOriente'] = 'sur_oriente';
-    // images['Regional Xela'] = 'xela';
+    images['Regional Xela'] = 'xela';
 
 	images['Regional Occidente'] = 'occidente';
     images['Regional Frontera'] = 'frontera';
@@ -275,11 +275,11 @@ function sectionsPage(sections){
 		}
 
 		if(i == 7){
-		    list.append('<img src="images/editions/blue1.png" width="24%">');
-		}else if(i == 9){
+		    //list.append('<img src="images/editions/blue1.png" width="24%">');
+		}else if(i == 10){
             list.append('<img src="images/editions/blue1.png" width="24%">');
             list.append('<img src="images/editions/white1.png" width="24%">');
-        }else if(i == 10){
+        }else if(i == 11){
             list.append('<img src="images/editions/blue1.png" width="24%">');
             list.append('<img src="images/editions/white1.png" width="24%">');
             list.append('<img src="images/editions/white1.png" width="24%">');
@@ -357,6 +357,53 @@ function tabsPanel(pages, tabs){
 	
 	
 	panel.listview("refresh");
+}
+
+function tabsPage(pages, tabs){
+	var index = parseInt(window.sessionStorage.currentPage);
+	if(typeof tabs == "undefined"){
+		tabs = JSON.parse(window.sessionStorage.tabs);
+	}
+
+	var images = {};
+
+    images['Nacionales'] = 'pais';
+    images['Opinion'] = 'opinion';
+    images['Mundo'] = 'mundo';
+    images['Deporte'] = 'deportes';
+
+    images['Estrellas y Familia'] = 'estrellas';
+
+    var image = undefined;
+    var list = $('#sections-grid');
+    list.html('');
+
+	if(tabs.length > 0){
+		$.each(tabs, function(i, tab){
+			image = images[tab.title];
+
+            if(typeof image != 'undefined'){
+                if(i == index){
+                    image += '_alt';
+                }
+                list.append('<a href="#" onclick="showTab(' + (tab.page_number - 1) + ');"><img src="images/sections/' + image + '.png" alt="' + tab.title + '" width="23%"></a>');
+            }
+
+            if(i == 5){
+                list.append('<img src="images/sections/white1.png" width="23%">');
+                list.append('<img src="images/sections/blue1.png" width="23%">');
+            }else if(i == 6){
+                list.append('<img src="images/sections/white1.png" width="23%">');
+                list.append('<img src="images/sections/blue1.png" width="23%">');
+                list.append('<img src="images/sections/white1.png" width="23%">');
+
+                list.append('<img src="images/sections/blue1.png" width="23%">');
+                list.append('<img src="images/sections/white1.png" width="23%">');
+                list.append('<img src="images/sections/blue1.png" width="23%">');
+                list.append('<img src="images/sections/white1.png" width="23%">');
+            }
+		});
+	}
 }
 
 
@@ -453,6 +500,11 @@ function showPage(number){
 	
 	getMedia();
 	$('html,body').animate({scrollTop: 0}, 0);
+}
+
+function showTab(number){
+    window.sessionStorage.currentPage = number;
+    $.mobile.changePage("pages.html");
 }
 
 

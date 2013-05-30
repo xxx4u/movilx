@@ -4,7 +4,8 @@
         <h1>Regionales</h1>
     </div>
     <div data-role="content">
-        <div id="sections-grid">
+        <img src="images/nd.png" height="100">
+        <div id="sections-grid" class="grid">
             <a href=""><img src="images/editions/metro.png" width="24%"></a>
             <a href=""><img src="images/editions/sur.png" width="24%"></a>
             <a href=""><img src="images/editions/norte.png" width="24%"></a>
@@ -37,7 +38,7 @@
         </div>
     </div>
     <script type="text/javascript">
-    	$('#editions-page').on('pagebeforecreate', function(event){
+    	$('#editions-menu-page').on('pagebeforecreate', function(event){
     		signed_in(event);
     	});
     	 $('#editions-menu-page').on('pageinit', function(event){
