@@ -1,0 +1,47 @@
+<div id="editions-menu-page" data-role="page">
+    <div data-role="header" data-position="fixed">
+        <a data-icon="back" data-iconpos="left" data-direction="reverse" data-rel="back" title="Regresar">Atrás</a>
+        <h1>Regionales</h1>
+    </div>
+    <div data-role="content">
+        <div id="sections-grid">
+            <a href=""><img src="images/editions/metro.png" width="24%"></a>
+            <a href=""><img src="images/editions/sur.png" width="24%"></a>
+            <a href=""><img src="images/editions/norte.png" width="24%"></a>
+            <a href=""><img src="images/editions/oriente.png" width="24%"></a>
+
+            <a href=""><img src="images/editions/centro_occidente.png" width="24%"></a>
+            <a href=""><img src="images/editions/sur_occidente.png" width="24%"></a>
+            <a href=""><img src="images/editions/sur_oriente.png" width="24%"></a>
+            <img src="images/editions/blue1.png" width="24%">
+
+            <a href=""><img src="images/editions/occidente.png" width="24%"></a>
+            <a href=""><img src="images/editions/frontera.png" width="24%"></a>
+            <img src="images/editions/blue1.png" width="24%">
+            <img src="images/editions/white1.png" width="24%">
+
+            <a href=""><img src="images/editions/verapaz.png" width="24%"></a>
+            <img src="images/editions/blue1.png" width="24%">
+            <img src="images/editions/white1.png" width="24%">
+            <img src="images/editions/white1.png" width="24%">
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="tab1">
+        <div data-role="navbar" data-iconpos="left">
+            <ul>
+                <li><a href="#" data-icon="home">Inicio</a></li>
+                <!--<li><a href="#" data-icon="star" onclick="goToEditionsPage();">Mis Ediciones</a></li>-->
+                <li><a href="profile.html" data-icon="gear">Mi cuenta</a></li>
+                <li><a href="#" onclick="logout();" data-icon="delete">Salir</a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+    	$('#editions-page').on('pagebeforecreate', function(event){
+    		signed_in(event);
+    	});
+    	 $('#editions-menu-page').on('pageinit', function(event){
+    	    sectionsPage();
+	    });
+    </script>
+</div>

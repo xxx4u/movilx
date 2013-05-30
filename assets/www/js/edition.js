@@ -188,7 +188,9 @@ function prevSection(){
 	}
 }
 
-function showSection(index){
+// deprecated
+function showSectionOld(index){
+    console.log(index);
 	var i = window.sessionStorage.currentSection;
 	
 	var last = i % 2 == 0 ? "even" : "odd";
@@ -206,6 +208,13 @@ function showSection(index){
 		sectionsPanel(sections);
 		$("#sections-panel").panel("close");
 	}
+}
+
+function showSection(index){
+    console.log(index);
+	var i = window.sessionStorage.currentSection;
+	window.sessionStorage.currentSection = index;
+    $.mobile.changePage("edition_even.html");
 }
 
 function sectionsPanel(sections){
@@ -227,6 +236,55 @@ function sectionsPanel(sections){
 	});
 	
 	panel.listview("refresh");
+}
+
+function sectionsPage(sections){
+	var index = parseInt(window.sessionStorage.currentSection);
+	if(typeof sections == 'undefined'){
+		sections = JSON.parse(window.sessionStorage.sections);
+	}
+	var section = sections[index];
+	var images = {};
+
+	images['Metro'] = 'metro';
+	images['Regional Sur'] = 'sur';
+	images['Regional Norte'] = 'norte';
+	images['Regional Oriente'] = 'oriente';
+
+	images['Regional Centro'] = 'centro_occidente';
+	images['Regional SurOccidente'] = 'sur_occidente';
+    images['Regional SurOriente'] = 'sur_oriente';
+    // images['Regional Xela'] = 'xela';
+
+	images['Regional Occidente'] = 'occidente';
+    images['Regional Frontera'] = 'frontera';
+
+	images['Regional Verapaz'] = 'verapaz';
+
+	var image = undefined;
+	var list = $('#sections-grid');
+	list.html('');
+	$.each(sections, function(i, section){
+		image = images[section.title];
+
+		if(typeof image != 'undefined'){
+		    if(i == index){
+                image += '_alt';
+            }
+		    list.append('<a href="#" onclick="showSection(' + i + ');"><img src="images/editions/' + image + '.png" alt="' + section.title + '" width="24%"></a>');
+		}
+
+		if(i == 7){
+		    list.append('<img src="images/editions/blue1.png" width="24%">');
+		}else if(i == 9){
+            list.append('<img src="images/editions/blue1.png" width="24%">');
+            list.append('<img src="images/editions/white1.png" width="24%">');
+        }else if(i == 10){
+            list.append('<img src="images/editions/blue1.png" width="24%">');
+            list.append('<img src="images/editions/white1.png" width="24%">');
+            list.append('<img src="images/editions/white1.png" width="24%">');
+        }
+	});
 }
 
 
