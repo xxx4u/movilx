@@ -13,7 +13,7 @@ function failure(e){
 }
 
 function getEditionCover(selector, date){
-	$(selector).load("");
+	$(selector).load('');
 }
 
 function getEditionURL(date){
@@ -58,14 +58,14 @@ function searchEditions(){
 
 function getEditions(start, end, success, error){
 	
-	if(start == undefined){
+	if(typeof start == 'undefined'){
 		start = lastWeek();
 	}else{
 		start = start;
 	}
 	start = formatDate(start);
 	
-	if(end == undefined){
+	if(typeof end == 'undefined'){
 		end = today();
 	}else{
 		end = end;
@@ -75,7 +75,7 @@ function getEditions(start, end, success, error){
 	var args = {"s_date": start, "e_date": end};
 	
 	$.post(editionsURL, args, function(data){
-		if(success != undefined){
+		if(typeof success != 'undefined'){
 			success();
 		}
 		if(data.items == null){
@@ -134,7 +134,7 @@ function getSections(date){
 }
 
 function loadSections(sections){
-	if(sections == undefined){
+	if(typeof sections == 'undefined'){
 		sections = JSON.parse(window.sessionStorage.sections);
 	}
 	
@@ -219,7 +219,7 @@ function showSection(index){
 
 function sectionsPanel(sections){
 	var index = parseInt(window.sessionStorage.currentSection);
-	if(sections == undefined){
+	if(typeof sections == 'undefined'){
 		sections = JSON.parse(window.sessionStorage.sections);
 	}
 	var section = sections[index];
@@ -261,8 +261,8 @@ function sectionsPage(sections){
 
 	images['Regional Verapaz'] = 'verapaz';
 
-	var image = undefined;
-	var list = $('#sections-grid');
+	var image;
+	var list = $('#editions-grid');
 	list.html('');
 	$.each(sections, function(i, section){
 		image = images[section.title];
@@ -282,14 +282,15 @@ function sectionsPage(sections){
         }else if(i == 11){
             list.append('<img src="images/editions/blue1.png" width="24%">');
             list.append('<img src="images/editions/white1.png" width="24%">');
-            list.append('<img src="images/editions/white1.png" width="24%">');
+            //list.append('<img src="images/editions/white1.png" width="24%">');
         }
 	});
+	list.append('<a href="sections_menu.html"><img src="images/editions/secciones.png" width="23%"></a>');
 }
 
 
 function getTabs(section){
-	if(typeof section == "undefined"){
+	if(typeof section == 'undefined'){
 		var index = window.sessionStorage.currentSection;
 		var sections = JSON.parse(window.sessionStorage.sections);
 		section = sections[index];
@@ -328,7 +329,7 @@ function getTabs(section){
 
 function tabsPanel(pages, tabs){
 	var index = parseInt(window.sessionStorage.currentPage);
-	if(typeof tabs == "undefined"){
+	if(typeof tabs == 'undefined'){
 		tabs = JSON.parse(window.sessionStorage.tabs);
 	}
 	
@@ -361,7 +362,7 @@ function tabsPanel(pages, tabs){
 
 function tabsPage(pages, tabs){
 	var index = parseInt(window.sessionStorage.currentPage);
-	if(typeof tabs == "undefined"){
+	if(typeof tabs == 'undefined'){
 		tabs = JSON.parse(window.sessionStorage.tabs);
 	}
 
@@ -374,7 +375,7 @@ function tabsPage(pages, tabs){
 
     images['Estrellas y Familia'] = 'estrellas';
 
-    var image = undefined;
+    var image;
     var list = $('#sections-grid');
     list.html('');
 
@@ -400,10 +401,11 @@ function tabsPage(pages, tabs){
                 list.append('<img src="images/sections/blue1.png" width="23%">');
                 list.append('<img src="images/sections/white1.png" width="23%">');
                 list.append('<img src="images/sections/blue1.png" width="23%">');
-                list.append('<img src="images/sections/white1.png" width="23%">');
+                //list.append('<img src="images/sections/white1.png" width="23%">');
             }
 		});
 	}
+	list.append('<a href="editions_menu.html"><img src="images/sections/regionales.png" width="23%"></a>');
 }
 
 
@@ -485,7 +487,7 @@ function prevPage(){
 }
 
 function showPage(number){
-	if(typeof number == "undefined"){
+	if(typeof number == 'undefined'){
 		number = 0;
 	}
 	window.sessionStorage.currentPage = number;
@@ -590,7 +592,7 @@ function getMedia(page){
 }
 
 function mediaPanel(media){
-	if(media == undefined){
+	if(typeof media == 'undefined'){
 		media = JSON.parse(window.sessionStorage.media);
 	}
 	

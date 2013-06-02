@@ -5,26 +5,7 @@
     </div>
     <div data-role="content">
         <img src="images/nd.png" height="100">
-        <div id="sections-grid" class="grid">
-            <a href=""><img src="images/editions/metro.png" width="24%"></a>
-            <a href=""><img src="images/editions/sur.png" width="24%"></a>
-            <a href=""><img src="images/editions/norte.png" width="24%"></a>
-            <a href=""><img src="images/editions/oriente.png" width="24%"></a>
-
-            <a href=""><img src="images/editions/centro_occidente.png" width="24%"></a>
-            <a href=""><img src="images/editions/sur_occidente.png" width="24%"></a>
-            <a href=""><img src="images/editions/sur_oriente.png" width="24%"></a>
-            <img src="images/editions/blue1.png" width="24%">
-
-            <a href=""><img src="images/editions/occidente.png" width="24%"></a>
-            <a href=""><img src="images/editions/frontera.png" width="24%"></a>
-            <img src="images/editions/blue1.png" width="24%">
-            <img src="images/editions/white1.png" width="24%">
-
-            <a href=""><img src="images/editions/verapaz.png" width="24%"></a>
-            <img src="images/editions/blue1.png" width="24%">
-            <img src="images/editions/white1.png" width="24%">
-            <img src="images/editions/white1.png" width="24%">
+        <div id="editions-grid" class="grid">
         </div>
     </div>
     <div data-role="footer" data-position="fixed" data-id="tab1">
@@ -41,7 +22,7 @@
     	$('#editions-menu-page').on('pagebeforecreate', function(event){
     		signed_in(event);
     	});
-    	 $('#editions-menu-page').on('pageinit', function(event){
+    	$('#editions-menu-page').on('pageinit', function(event){
     	    sectionsPage();
 	    });
     </script>
