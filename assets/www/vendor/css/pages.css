@@ -3,6 +3,10 @@
 	margin:0 auto;
 }
 
+#editions > dt{
+	max-width:83%;
+}
+
 #sections > dt{
 	max-width:95%;
 	margin:0 auto;

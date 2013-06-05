@@ -486,13 +486,18 @@ function prevPage(){
 	}
 }
 
-function showPage(number){
+function showPage(number, pages){
 	if(typeof number == 'undefined'){
 		number = 0;
 	}
+
+	if(typeof pages == 'undefined'){
+	    pages = JSON.parse(window.sessionStorage.pages);
+	}
+
 	window.sessionStorage.currentPage = number;
 	
-	$('#section-page #subtitle').html('P&aacute;gina #' + (number + 1));
+	$('#section-page #subtitle').html('P&aacute;gina #' + (number + 1) + '/' + pages.length);
 	$('#section-page #pages dt.current').hide().toggleClass('current');
 	$('#section-page #pages dt:nth-child(' + (number + 1) + ')').show().toggleClass('current');
 	
