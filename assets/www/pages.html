@@ -44,7 +44,10 @@
         	var index = parseInt(window.sessionStorage.currentSection);
         	var sections = JSON.parse(window.sessionStorage.sections);
 			var section = sections[index];
-			
+
+			if(index > 0){
+			    $('#tabs-btn').hide();
+			}
 			$('#section-page #title').html(section.title);
 			
 			var pages = JSON.parse(window.sessionStorage.pages);

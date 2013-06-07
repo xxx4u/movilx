@@ -13,35 +13,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/www/vendor/css/jquery.mobile.structure-1.3.0.min.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/vendor/css/images/.directory" afterPath="$PROJECT_DIR$/assets/www/vendor/css/images/.directory" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/js/defaults.js" afterPath="$PROJECT_DIR$/assets/www/js/defaults.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/edition_even.html" afterPath="$PROJECT_DIR$/assets/www/edition_even.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/edition_odd.html" afterPath="$PROJECT_DIR$/assets/www/edition_odd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/editions.html" afterPath="$PROJECT_DIR$/assets/www/editions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/editions_menu.html" afterPath="$PROJECT_DIR$/assets/www/editions_menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/index.html" afterPath="$PROJECT_DIR$/assets/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/vendor/css/pages.css" afterPath="$PROJECT_DIR$/assets/www/vendor/css/pages.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/js/edition.js" afterPath="$PROJECT_DIR$/assets/www/js/edition.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/pages.html" afterPath="$PROJECT_DIR$/assets/www/pages.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/profile.html" afterPath="$PROJECT_DIR$/assets/www/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/sections_menu.html" afterPath="$PROJECT_DIR$/assets/www/sections_menu.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="movilx.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370477817393" ignored="false" />
-    <file path="/fragment.java" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1369277053081" ignored="false" />
-    <file path="/index.html" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370479000745" ignored="false" />
-    <file path="/editions.html" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370480851193" ignored="false" />
-    <file path="/edition.js" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370393679515" ignored="false" />
-    <file path="/pages.css" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1369278935707" ignored="false" />
-    <file path="/editions_menu.html" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370150329726" ignored="false" />
-    <file path="/edition_even.html" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370143211335" ignored="false" />
-    <file path="/edition_odd.html" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1369944591769" ignored="false" />
-    <file path="/sections_menu.css" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1369947833499" ignored="false" />
-    <file path="/sections_menu.html" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370149486574" ignored="false" />
-    <file path="/pages.html" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370393628609" ignored="false" />
-    <file path="/defaults.js" changelist="019c6a8d-e6ee-4847-a3a5-9c1185ae9f47" time="1370480630566" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,19 +82,25 @@
       <file leaf-file-name="editions.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/www/editions.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="102" selection-start="1628" selection-end="1628" vertical-scroll-proportion="-11.583333">
-              <folding>
-                <element signature="n#style#0;n#h4#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#h4#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="35" column="102" selection-start="1628" selection-end="1628" vertical-scroll-proportion="-21.875" vertical-offset="0" max-vertical-offset="915">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="edition_even.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/www/edition_even.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="10" selection-start="838" selection-end="838" vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="975">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="71" selection-start="228" selection-end="228" vertical-scroll-proportion="0.13975155">
+            <state line="17" column="10" selection-start="818" selection-end="818" vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="1020">
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -127,55 +110,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edition_odd.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/edition_odd.html">
+      <file leaf-file-name="edition.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/www/js/edition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="85" selection-start="2313" selection-end="2313" vertical-scroll-proportion="-19.375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sections_menu.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/sections_menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="85" selection-start="808" selection-end="808" vertical-scroll-proportion="-9.375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pages.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/pages.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="85" selection-start="2250" selection-end="2250" vertical-scroll-proportion="-8.708333">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pages-help.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/pages-help.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/profile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="85" selection-start="1663" selection-end="1663" vertical-scroll-proportion="-11.208333">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editions_menu.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/editions_menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="85" selection-start="809" selection-end="809" vertical-scroll-proportion="-9.375">
+            <state line="252" column="0" selection-start="7380" selection-end="7380" vertical-scroll-proportion="0.23802395" vertical-offset="3621" max-vertical-offset="9510">
               <folding />
             </state>
           </provider>
@@ -205,17 +143,17 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/assets/www/vendor/css/sections_menu.css" />
-        <option value="$PROJECT_DIR$/assets/www/js/edition.js" />
         <option value="$PROJECT_DIR$/assets/www/vendor/css/pages.css" />
         <option value="$PROJECT_DIR$/assets/www/index.html" />
         <option value="$PROJECT_DIR$/assets/www/js/defaults.js" />
         <option value="$PROJECT_DIR$/assets/www/edition_even.html" />
         <option value="$PROJECT_DIR$/assets/www/edition_odd.html" />
         <option value="$PROJECT_DIR$/assets/www/editions_menu.html" />
-        <option value="$PROJECT_DIR$/assets/www/pages.html" />
         <option value="$PROJECT_DIR$/assets/www/profile.html" />
         <option value="$PROJECT_DIR$/assets/www/sections_menu.html" />
         <option value="$PROJECT_DIR$/assets/www/editions.html" />
+        <option value="$PROJECT_DIR$/assets/www/js/edition.js" />
+        <option value="$PROJECT_DIR$/assets/www/pages.html" />
       </list>
     </option>
   </component>
@@ -319,7 +257,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -492,7 +430,8 @@
       <workItem from="1370142819530" duration="6113000" />
       <workItem from="1370392309452" duration="340000" />
       <workItem from="1370392670354" duration="1713000" />
-      <workItem from="1370477811849" duration="3751000" />
+      <workItem from="1370477811849" duration="4345000" />
+      <workItem from="1370568268807" duration="159000" />
     </task>
     <task id="LOCAL-00001" summary="changes UI to fit customer 'suggestions'">
       <created>1369279741243</created>
@@ -502,25 +441,27 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33793000" />
+    <option name="totallyTimeSpent" value="34546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="-3" width="1924" height="1045" extended-state="7" />
     <editor active="true" />
     <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32845894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263041" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18996799" sideWeight="0.77196884" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22803114" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -595,120 +536,115 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/assets/www/js/defaults.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="4" selection-start="466" selection-end="466" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/www/js/edition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="13" column="4" selection-start="466" selection-end="466" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/audio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/www/edition_even.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="85" selection-start="2314" selection-end="2314" vertical-scroll-proportion="-10.041667">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/editions_menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="85" selection-start="809" selection-end="809" vertical-scroll-proportion="-9.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/www/pages.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="85" selection-start="2250" selection-end="2250" vertical-scroll-proportion="-8.708333">
+        <state line="15" column="85" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="510">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/pages-help.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="85" selection-start="1663" selection-end="1663" vertical-scroll-proportion="-11.208333">
+        <state line="31" column="85" selection-start="1663" selection-end="1663" vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="840">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/zoom.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.25776398">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.25776398" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/video.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/signup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.3043478">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.3043478" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/signin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.048136648">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.048136648" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/sections_menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="85" selection-start="808" selection-end="808" vertical-scroll-proportion="-9.375">
+        <state line="15" column="85" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="510">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/edition_odd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="85" selection-start="2313" selection-end="2313" vertical-scroll-proportion="-19.375">
+        <state line="39" column="85" selection-start="2313" selection-end="2313" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1080">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/www/editions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="102" selection-start="1628" selection-end="1628" vertical-scroll-proportion="-11.583333">
-          <folding>
-            <element signature="n#style#0;n#h4#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#h4#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="71" selection-start="228" selection-end="228" vertical-scroll-proportion="0.13975155">
+        <state line="17" column="10" selection-start="818" selection-end="818" vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="1020">
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/www/editions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="102" selection-start="1628" selection-end="1628" vertical-scroll-proportion="-21.875" vertical-offset="0" max-vertical-offset="915">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/www/edition_even.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="10" selection-start="838" selection-end="838" vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="975">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/www/pages.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="37" selection-start="2705" selection-end="2705" vertical-scroll-proportion="0.6506211" vertical-offset="301" max-vertical-offset="990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/www/js/edition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="252" column="0" selection-start="7380" selection-end="7380" vertical-scroll-proportion="0.23802395" vertical-offset="3621" max-vertical-offset="9510">
+          <folding />
         </state>
       </provider>
     </entry>

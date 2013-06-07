@@ -261,6 +261,8 @@ function sectionsPage(sections){
 
 	images['Regional Verapaz'] = 'verapaz';
 
+    images['Edicion Nacional'] = 'nacional';
+
 	var image;
 	var list = $('#editions-grid');
 	list.html('');
@@ -277,7 +279,7 @@ function sectionsPage(sections){
 		if(i == 7){
 		    //list.append('<img src="images/editions/blue1.png" width="24%">');
 		}else if(i == 10){
-            list.append('<img src="images/editions/blue1.png" width="24%">');
+            //list.append('<img src="images/editions/blue1.png" width="24%">');
             list.append('<img src="images/editions/white1.png" width="24%">');
         }else if(i == 11){
             list.append('<img src="images/editions/blue1.png" width="24%">');
