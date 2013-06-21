@@ -85,3 +85,6 @@ function checkRequirements(){
 }
 
 
+function sortByWeight(a, b){
+    return a.weight - b.weight;
+}

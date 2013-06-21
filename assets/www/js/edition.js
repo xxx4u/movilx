@@ -115,6 +115,7 @@ function getSections(date){
 				
 				section.id = item.supplement_id;
 				section.title = item.cat_supplement_type_name;
+				section.weight = item.weight;
 				section.date = parseDashedDate(item.edition_publication_date);
 				section.slashDate = slashDate(section.date);
 				section.prettyDate = prettyDate(section.date);
@@ -122,6 +123,7 @@ function getSections(date){
 				
 				sections.push(section);
 			});
+			sections.sort(sortByWeight);
 		}
 		
 		window.sessionStorage.sections = JSON.stringify(sections);
@@ -310,6 +312,7 @@ function getTabs(section){
 				
 				tab.id = item.cat_tab_detail_id;
 				tab.title = item.cat_tab_detail_name;
+				tab.weight = item.weight;
 				tab.page_number = item.page_number;
 				tab.page_id = item.page_id;
 				//page.base_url = item.base_url + item.year + "/" + item.month + "/" + item.day + "/" + item.folder + "/"
@@ -320,6 +323,7 @@ function getTabs(section){
 				
 				tabs.push(tab);
 			});
+			tabs.sort(sortByWeight);
 			window.sessionStorage.tabs = JSON.stringify(tabs);
 		}else{
 			window.sessionStorage.tabs = JSON.stringify([]);
@@ -370,12 +374,15 @@ function tabsPage(pages, tabs){
 
 	var images = {};
 
-    images['Nacionales'] = 'pais';
+    images['Pais'] = 'pais';
     images['Opinion'] = 'opinion';
     images['Mundo'] = 'mundo';
     images['Deporte'] = 'deportes';
 
-    images['Estrellas y Familia'] = 'estrellas';
+    images['Estrellas'] = 'estrellas';
+    images['Impacto'] = 'impacto';
+    images['Familia'] = 'familia';
+    images['Negocios y Servicios'] = 'negocios';
 
     var image;
     var list = $('#sections-grid');
