@@ -174,12 +174,12 @@ function updateProfile(){
 function logout(){
 	var username = window.localStorage.username;
 	$.post(signoutURL, {username: username}, function(response){
-    	
+
         if(response.items[0].closed == "OK"){
         	window.localStorage.removeItem("username");
         	window.localStorage.removeItem("password");
             window.localStorage.removeItem("session");
-            
+
             $.mobile.changePage("index.html");
         }else{
             navigator.notification.alert("Error:" + response.error[0].text, function(){}, "Error", "Aceptar");

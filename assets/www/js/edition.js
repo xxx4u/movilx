@@ -407,10 +407,10 @@ function tabsPage(pages, tabs){
                 list.append('<img src="images/sections/blue1.png" width="23%">');
                 list.append('<img src="images/sections/white1.png" width="23%">');
 
-                list.append('<img src="images/sections/blue1.png" width="23%">');
+                //list.append('<img src="images/sections/blue1.png" width="23%">');
                 list.append('<img src="images/sections/white1.png" width="23%">');
                 list.append('<img src="images/sections/blue1.png" width="23%">');
-                //list.append('<img src="images/sections/white1.png" width="23%">');
+                list.append('<img src="images/sections/white1.png" width="23%">');
             }
 		});
 	}

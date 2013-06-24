@@ -54,6 +54,8 @@
 			<script src="js/navigation.js"></script>
 			<script type="text/javascript">
 				$(document).bind('deviceready', function(){
+					document.addEventListener('backbutton', exit, false);
+
 					//autoLogin();
 				});
 			</script>

@@ -88,3 +88,12 @@ function checkRequirements(){
 function sortByWeight(a, b){
     return a.weight - b.weight;
 }
+
+function exit(e){
+   if($.mobile.activePage.is('#index-page')){
+       e.preventDefault();
+       navigator.app.exitApp();
+   }else{
+       navigator.app.backHistory();
+   }
+}
