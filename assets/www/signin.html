@@ -4,8 +4,8 @@
 		<h1>Ingreso</h1>
 	</header>
 	<div id="content" data-role="content">
-		<div data-role="collapsible-set">
-			<div data-role="collapsible" data-collapsed="false">
+		<div id="collapse-set" data-role="collapsible-set">
+			<div id="login-collapse" data-role="collapsible" data-collapsed="false">
 				<h3>Inicia sesi&oacute;n</h3>
 				<p>Usa tu cuenta de <b>nuestrodiario.com</b> para ingresar.</p>
 				<form id="sign-in-form">
@@ -20,11 +20,22 @@
 					<button type="button" onclick="signin();" id="submit-button" data-icon="check" data-role="button">Ingresar</button>
 				</form>
 			</div>
-			<div data-role="collapsible">
-				<h3>&iquest;No tienes una cuenta?</h3>
-				<p>Crear una cuenta es muy f&aacute;cil y r&aacute;pido.</p>
-				<a href="signup.html" data-icon="plus" data-role="button">Crear mi cuenta</a>
-			</div>
+            <div id="reset-collapse" data-role="collapsible">
+                <h3>&iquest;Olvidaste tu contraseña?</h3>
+                <p>Ingresa tu <b>nombre de usuario</b> o direcci&oacute;n de <b>correo electr&oacute;nico</b>:</p>
+                <form id="password-reset-form">
+                    <div data-role="fieldcontain" class="ui-hide-label">
+                        <label for="login">Usuario:</label>
+                        <input type="text" name="login" id="login" value="" placeholder="Usuario o email" />
+                    </div>
+                    <button type="button" onclick="passwordReset();" id="reset-button" data-icon="check" data-role="button">Enviar</button>
+                </form>
+            </div>
+            <div data-role="collapsible">
+                <h3>&iquest;No tienes una cuenta?</h3>
+                <p>Crear una cuenta es muy f&aacute;cil y r&aacute;pido.</p>
+                <a href="signup.html" data-icon="plus" data-role="button">Crear mi cuenta</a>
+            </div>
 		</div>
 	</div>
 	

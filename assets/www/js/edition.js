@@ -46,10 +46,12 @@ function searchEditions(){
 		
 		$.mobile.loading('show', {text: "Buscando ediciones...", textVisible: true});
 		disable("#submit-button");
+		disable(".ui-input-datebox");
 		
 		getEditions(s, e, function(){
 			$.mobile.loading("hide");
 			enable("#submit-button");
+			enable(".ui-input-datebox");
 		}, function(e){
 			failure(e);
 		});
@@ -186,7 +188,7 @@ function prevSection(){
 		var even = index % 2 == 0 ? "even" : "odd";
 		$.mobile.changePage("edition_" + even + ".html", {reverse: true});
 	}else{
-		$("#sections-panel").panel("open");
+		//$("#sections-panel").panel("open");
 	}
 }
 
@@ -491,7 +493,7 @@ function prevPage(){
 	if(index > 0){
 		showPage(index - 1);
 	}else{
-		$('#tabs-panel').panel('open');
+		//$('#tabs-panel').panel('open');
 	}
 }
 

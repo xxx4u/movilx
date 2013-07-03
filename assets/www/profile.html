@@ -4,25 +4,45 @@
 		<h1>Mi cuenta</h1>
 	</div>
 	<div id="content" data-role="content">
-		<form id="user-profile-form">
-     		<div data-role="fieldcontain">
-     			<label for="name">Nombre:</label>
-     			<input type="text" name="name" id="name" placeholder="Nombre" class="required" minlength="2"/>
- 			</div>
- 			<div data-role="fieldcontain">
-     			<label for="lastname">Apellido:</label>
-     			<input type="text" name="lastname" id="lastname" placeholder="Apellido" class="required" minlength="2"/>
- 			</div>
-     		<div data-role="fieldcontain">
-     			<label for="username">Usuario:</label>
-     			<input type="text" name="username" id="username" placeholder="Usuario" class="required" minlength="5"/>
- 			</div>
-     		<div data-role="fieldcontain">
-         		<label for="email">Email:</label>
-         		<input type="text" name="email" id="email" placeholder="tu@ejemplo.com" class="required email" />
-     		</div>
-            <input type="submit" value="Actualizar" id="submit-button" data-icon="check"/>
-        </form>
+        <div id="collapse-set" data-role="collapsible-set">
+            <div id="profile-collapse" data-role="collapsible" data-collapsed="false">
+                <h3>Datos de mi cuenta</h3>
+                <form id="user-profile-form">
+                    <div data-role="fieldcontain">
+                        <label for="name">Nombre:</label>
+                        <input type="text" name="name" id="name" placeholder="Nombre" class="required" minlength="2"/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="lastname">Apellido:</label>
+                        <input type="text" name="lastname" id="lastname" placeholder="Apellido" class="required" minlength="2"/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="username">Usuario:</label>
+                        <input type="text" name="username" id="username" placeholder="Usuario" class="required" minlength="5"/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" placeholder="tu@ejemplo.com" class="required email" />
+                    </div>
+                    <input type="submit" value="Actualizar" id="submit-button" data-icon="check"/>
+                </form>
+            </div>
+            <div id="password-collapse" data-role="collapsible">
+                <h3>Cambia tu contraseña</h3>
+                <p>Ingresa tu nueva contraseña:</p>
+                <form id="password-change-form">
+                    <div data-role="fieldcontain" class="ui-hide-label">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" name="password" id="password" value="" placeholder="Contraseña" />
+                    </div>
+                    <div data-role="fieldcontain" class="ui-hide-label">
+                        <label for="confirm">Confirmaci&oacute;n:</label>
+                        <input type="password" name="confirm" id="confirm" value="" placeholder="Confirmación" />
+                    </div>
+                    <button type="button" onclick="passwordChange();" id="password-change-button" data-icon="check" data-role="button">Enviar</button>
+                </form>
+            </div>
+        </div>
 	</div>
     <div data-role="footer" data-position="fixed" data-id="tab1">
 	    <div data-role="navbar" data-iconpos="left">

@@ -3,6 +3,7 @@ var signinURL  = "http://media.nuestrodiario.com/MovilX/mobileOps2/user_in.php";
 var signoutURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/user_out.php";
 var profileURL = "http://media.nuestrodiario.com/MovilX/mobileOps2/get_profile.php";
 var updateURL  = "http://media.nuestrodiario.com/MovilX/mobileOps2/set_profile.php";
+var resetURL   = "http://media.nuestrodiario.com/MovilX/mobileOps2/passwd_recovery.php";
 
 function failure(e){
 	console.log(JSON.stringify(e));
@@ -187,4 +188,62 @@ function logout(){
         
     },"json").fail(function(e){failure(e);});
 	
+}
+
+function passwordReset(){
+	var login = $("#login").val();
+	if(login != ''){
+	    $.mobile.loading('show', {text: "Procesando...", textVisible: true});
+	    disable("#reset-button");
+
+        $.post(resetURL, {email_or_account: login, generate: 1}, function(response){
+
+            if(response.items != undefined && response.items.email_sent == "OK"){
+                window.localStorage.removeItem("username");
+                window.localStorage.removeItem("password");
+                window.localStorage.removeItem("session");
+
+                $('#login-collapse').trigger("expand");
+                navigator.notification.alert("Se ha enviado una nueva contraseña a: " + response.items.account_email, function(){}, "Atención", "Aceptar");
+            }else{
+                navigator.notification.alert(response.error[0].text, function(){}, "Error", "Aceptar");
+            }
+
+            $.mobile.loading('hide');
+            enable("#submit-button");
+
+        },"json").fail(function(e){failure(e);});
+    }
+}
+
+function passwordChange(){
+	var session = window.localStorage.session;
+    var password = $("#password").val();
+    var confirm = $("#confirm").val();
+
+	if(password != ''){
+	    if(password == confirm){
+	        $.mobile.loading('show', {text: "Actualizando...", textVisible: true});
+            disable("#submit-button");
+
+            var args = {session: session, passw: password};
+            $.post(updateURL, args, function(response){
+                console.log(JSON.stringify(response));
+
+                if(typeof response.error == 'undefined'){
+                    navigator.notification.alert("Contraseña cambiada con éxito.", function(){}, "Alerta", "Aceptar");
+                }else{
+                    navigator.notification.alert(response.error[0].text, function(){}, "Error", "Aceptar");
+                }
+
+                $.mobile.loading('hide');
+                enable("#submit-button");
+
+            }, "json").fail(function(e){failure(e);});
+	    }else{
+	        navigator.notification.alert("Las contraseñas no coinciden.", function(){}, "Error", "Aceptar");
+	    }
+	}else{
+	    navigator.notification.alert("Tu contraseña no puede estar en blanco.", function(){}, "Error", "Aceptar");
+	}
 }
