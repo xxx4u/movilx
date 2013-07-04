@@ -46,6 +46,8 @@
     
 	<script>
 	    $("#sign-in-page").on("pageinit", function(event){
+	        $('#username').val(window.localStorage.username);
+	        logout(false);
 		});
 	</script>
 </div>

@@ -15,6 +15,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="cordova-2.7.0" level="project" />
+    <orderEntry type="library" name="cordova-2.9.0" level="project" />
   </component>
 </module>
 
